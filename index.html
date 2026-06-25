@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>verzekering-posten-kiezer</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@500,700&display=swap" rel="stylesheet">
+<style>
+:root, [data-theme="light"]{--bg:#eef2f7;--surface:#ffffff;--surface-rgb:255,255,255;--surface2:#dde8f0;--text:#0d2240;--muted:#5a7a96;--border:#b8cfe0;--primary:#0099cc;--radius:18px;--shadow:0 16px 36px rgba(0,0,0,.08);}
+[data-theme="dark"]{--bg:#0a1929;--surface:#0d2240;--surface-rgb:13,34,64;--surface2:#163050;--text:#e8f2fa;--muted:#7baac8;--border:#1e4068;--primary:#33bbee;--shadow:0 20px 40px rgba(0,0,0,.35);}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'Satoshi',system-ui,sans-serif;position:relative;overflow-x:hidden}body::before{content:'';position:fixed;top:-15%;left:50%;transform:translateX(-50%);width:1100px;height:700px;background:radial-gradient(ellipse at center,rgba(0,153,204,0.22) 0%,rgba(0,153,204,0.10) 35%,rgba(13,34,64,0.03) 60%,transparent 75%);pointer-events:none;z-index:0}body::after{content:'';position:fixed;bottom:-15%;right:-5%;width:700px;height:700px;background:radial-gradient(ellipse at center,rgba(13,34,64,0.08) 0%,rgba(13,34,64,0.03) 45%,transparent 70%);pointer-events:none;z-index:0}.wrap{position:relative;z-index:1}.content{position:relative;z-index:1}
+.topnav{margin-bottom:20px;position:relative}
+.hamburger{background:none;border:1px solid var(--border);border-radius:12px;padding:10px 14px;cursor:pointer;display:flex;flex-direction:column;gap:5px;width:48px;backdrop-filter:blur(8px);background:rgba(var(--surface-rgb),0.7)}
+.hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.hamburger:hover{border-color:#C9A227;transform:scale(1.08)}.hamburger{transition:transform .2s,border-color .2s}
+.hamburger:hover span{background:#C9A227}
+.sidemenu{position:fixed;top:0;left:-300px;width:280px;height:100vh;background:var(--surface);border-right:1px solid var(--border);z-index:1000;padding:24px 20px;display:flex;flex-direction:column;gap:4px;transition:left .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease,opacity .35s ease;box-shadow:4px 0 30px rgba(0,0,0,.15);opacity:0}.sidemenu.open{left:0;opacity:1;box-shadow:6px 0 50px rgba(201,162,39,0.20)}
+.sidemenu.open{left:0}
+.sidemenu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:999;display:none;backdrop-filter:blur(2px);opacity:0;transition:opacity .35s ease}.sidemenu-overlay.open{display:block;animation:fadeOverlay .35s ease forwards}@keyframes fadeOverlay{from{opacity:0}to{opacity:1}}
+.sidemenu-overlay.open{display:block}
+.sidemenu-sluit{align-self:flex-end;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);padding:4px 8px;border-radius:8px;margin-bottom:8px}
+.sidemenu-sluit:hover{color:var(--text)}
+.sidemenu-titel{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:8px 0 4px;font-weight:600}
+.sidemenu-item{background:none;border:none;text-align:left;padding:12px 14px;border-radius:12px;cursor:pointer;font:inherit;font-size:.95rem;color:var(--text);transition:all .2s;width:100%}
+.sidemenu-item:hover{background:var(--surface2);color:#C9A227;transform:translateX(6px)}.sidemenu-item{transition:background .2s,color .2s,transform .2s}
+.sidemenu-terug{color:#C9A227;font-weight:600;margin-top:4px}
+.tab-btn{display:none}
+.tab-inhoud{display:none}.tab-inhoud.actief{display:block}
+.info-tabel{width:100%;border-collapse:collapse;margin-top:12px}
+.info-tabel th{text-align:left;padding:10px 12px;background:var(--surface2);border-bottom:2px solid var(--border);font-size:.9rem}
+.info-tabel td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:.9rem;vertical-align:top}
+.info-tabel tr:last-child td{border-bottom:none}
+.info-tabel tr{transition:transform .15s}.info-tabel tr:hover td{background:var(--surface2)}.info-tabel tr:hover{transform:translateX(4px)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:600}
+.badge-groen{background:#d4edda;color:#155724}
+.badge-rood{background:#f8d7da;color:#721c24}
+.badge-grijs{background:var(--surface2);color:var(--muted)}
+.prijs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.prijs-grid{grid-template-columns:1fr}}.wrap{max-width:1200px;margin:0 auto;padding:24px}h1,h2{font-family:'Boska',serif}h1{font-size:clamp(2rem,5vw,4rem);line-height:1;margin:0 0 12px}p{max-width:70ch;color:var(--muted)}.hero,.content{display:grid;gap:20px}.hero{grid-template-columns:1.1fr .9fr;align-items:stretch;margin-bottom:20px;position:relative;z-index:300}.card{background:rgba(var(--surface-rgb),0.55);backdrop-filter:blur(32px) saturate(1.4);-webkit-backdrop-filter:blur(32px) saturate(1.4);border:1.5px solid rgba(0,153,204,0.40);border-radius:var(--radius);box-shadow:var(--shadow),0 0 60px rgba(0,153,204,0.18),inset 0 1px 0 rgba(255,255,255,0.15)}.panel{padding:24px;transition:box-shadow .3s}.panel:hover{box-shadow:var(--shadow),0 0 55px rgba(0,153,204,0.22)}.panel{transition:box-shadow .3s}.list{animation:fadeIn .25s ease}.rule{padding:12px 14px;background:var(--surface2);border-radius:14px;border:1px solid var(--border);animation:fadeIn .2s ease;transition:transform .2s,box-shadow .2s,border-color .2s}.rule:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,153,204,0.09);border-color:rgba(201,162,39,0.5)}@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInContent{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ripple{from{transform:scale(0);opacity:.4}to{transform:scale(4);opacity:0}}
+.fade-in-content{animation:fadeInContent .35s cubic-bezier(.22,1,.36,1)}
+.scroll-in{opacity:0;transform:translateY(30px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
+.scroll-in.zichtbaar{opacity:1;transform:translateY(0)}
+.ripple-wrap{position:relative;overflow:hidden}
+.ripple-cirkel{position:absolute;border-radius:50%;background:rgba(255,255,255,0.35);pointer-events:none;animation:ripple .55s ease-out forwards}select,input,button{font:inherit}select,input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer}
+.custom-select-wrap{position:relative;width:100%;z-index:400}
+.custom-select-btn{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font:inherit;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:border-color .3s,box-shadow .3s}
+.custom-select-btn:hover,.custom-select-btn.open{border-color:#C9A227;box-shadow:0 0 0 3px rgba(201,162,39,0.18)}
+.custom-select-btn.open svg{transform:rotate(180deg)}
+.custom-select-dropdown{position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.15);z-index:500;overflow:hidden;max-height:0;opacity:0;transform:translateY(-8px);transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .3s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+.custom-select-dropdown.open{max-height:320px;opacity:1;transform:translateY(0)}
+.custom-select-list{overflow-y:auto;max-height:320px;padding:6px}
+.custom-select-option{padding:11px 14px;border-radius:10px;cursor:pointer;font-size:.95rem;transition:background .15s,color .15s,transform .15s}
+.custom-select-option:hover{background:var(--surface2);color:#C9A227;transform:translateX(4px)}
+.custom-select-option.actief{background:rgba(201,162,39,0.12);color:#C9A227;font-weight:600}button{padding:14px 18px;border-radius:999px;border:1px solid var(--border);background:var(--primary);color:white;cursor:pointer}.toolbar{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;margin:18px 0}table{width:100%;border-collapse:collapse}th,td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}th{color:var(--muted);font-size:.92rem}.muted{color:var(--muted)}.list{display:grid;gap:10px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:8px 10px;border-radius:999px;background:var(--surface2);border:1px solid var(--border);font-size:.9rem;cursor:pointer;transition:background .2s,color .2s,transform .2s,box-shadow .2s}.chip:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(201,162,39,0.25)}.chip.actief{background:#0d2240;color:#C9A227;border-color:#C9A227}@media(max-width:900px){.hero,.toolbar{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="topnav" style="display:flex;justify-content:space-between;align-items:center;">
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidemenu" id="sideMenu">
+    <button class="sidemenu-sluit" onclick="toggleMenu()" aria-label="Sluiten">&#10005;</button>
+    <p class="sidemenu-titel">Overzichten</p>
+    <button class="sidemenu-item" onclick="wisselTab('termijnen');toggleMenu()">Gebruikstermijnen</button>
+    <button class="sidemenu-item" onclick="wisselTab('staffeling');toggleMenu()">Staffeling niet afleveren</button>
+    <button class="sidemenu-item" onclick="wisselTab('garantie');toggleMenu()">Garantie &amp; nazorg</button>
+
+    <button class="sidemenu-item" onclick="wisselTab('zozijn');toggleMenu()">Staffeling Zozijn/NTAC</button>
+    <button class="sidemenu-item" onclick="wisselTab('nvos');toggleMenu()">NVOS</button>
+    <hr style="border-color:var(--border);margin:12px 0">
+    <button class="sidemenu-item sidemenu-terug" onclick="wisselTab('codes');toggleMenu()">&#8592; Terug naar codes</button>
+  </div>
+  <div class="sidemenu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<img src="data:image/png;base64,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" alt="Eqwal Ability" style="height:48px;width:auto;object-fit:contain;mix-blend-mode:multiply;opacity:0.88;"></nav>
+
+<div id="tab-codes" class="tab-inhoud actief">
+<section class="hero">
+    <div class="card panel">
+      <h1>Kies je verzekering en zie direct welke posten je moet gebruiken</h1>
+      <p>Deze versie is expres simpel: je selecteert een verzekeringsgroep en je krijgt meteen de relevante codes, omschrijvingen en praktische notities wanneer je welke code gebruikt.</p>
+    </div>
+    <div class="card panel">
+      <h2 style="margin-top:0">Selectie</h2>
+      <div class="custom-select-wrap">
+        <button class="custom-select-btn" id="selectBtn" onclick="toggleSelect()">
+          <span id="selectLabel">Kies een verzekeraar</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="transition:transform .3s"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="custom-select-dropdown" id="selectDropdown">
+          <div class="custom-select-list" id="selectList"></div>
+        </div>
+      </div>
+      <select id="verzekering" style="display:none"></select>
+      <div class="chips" id="chips" style="margin-top:14px"></div>
+      <p class="muted" id="merken"></p>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="card panel">
+      <h2 style="margin-top:0">Praktische regels</h2>
+      <div id="regels" class="list"></div>
+  </section>
+</div><!-- einde tab-codes -->
+  <tbody id="tbody" style="display:none"></tbody>
+</div>
+<script>
+const data = {
+"Achmea":{"verzekeraars":["De Friesland","FBTO","Interpolis","Zilveren Kruis","ZieZo","De Christelijke Zorgverzekeraar"],"codes":[
+["01","VLOS per stuk"],
+["02","VLOS per paar"],
+["03","OSA laag eerste voorziening"],
+["04","OSA laag vervolg / reserve / herhaling"],
+["05","OSA hoog eerste voorziening"],
+["06","OSA hoog vervolg / reserve / herhaling"],
+["07","OSA extra hoog eerste voorziening"],
+["08","OSA extra hoog vervolg / reserve / herhaling"],
+["09","Proefschoen per kant, bij eerste verstrekking of op medische indicatie"],
+["16a","Enkelkoker statisch / dynamisch vast aan supplement"],
+["17","Enkelkoker statisch / dynamisch verwerkt tussen voering en overleer (alleen bij 07)"],
+["41.0","Verbandschoenen (21% BTW)"],
+["42","OSB laag / hoog / extra hoog"],
+["70","OVAC consult, maatnemen, afleveren en nazorg (basispost)"],
+["71","OVAC supplement individueel"],
+["72","OVAC supplement met mediale/laterale enkelkap versteviging"],
+["73","OVAC pro-supinatiewig (zool + hak)"],
+["74","OVAC eenvoudige afwikkelrol"],
+["75","OVAC gecompliceerde afwikkelrol met slijtlaag"],
+["76","OVAC hakaanpassing bestaande hak t/m 2 cm (alleen i.c.m. 74 of 75)"],
+["77","OVAC hakzoolverhoging niet bekleed 1 t/m 3 cm"],
+["78","OVAC hakzoolverhoging niet bekleed 3 t/m 7 cm"],
+["79","OVAC hakzoolverhoging niet bekleed vanaf 7 cm"],
+["81","OVAC hakzoolverhoging bekleed 3 t/m 7 cm"],
+["82","OVAC hakzoolverhoging bekleed 7 cm of meer"],
+["84","OVAC aangepaste hakken (sleehak, bufferhak, afrolhak e.d.)"],
+["85","OVAC zoolverstijving (excl. afwikkeling en hakaanpassing)"],
+["86","OVAC drukvrij maken via uitzetten schacht"],
+["87","OVAC drukvrij maken van exostose in schacht met polstering/uitsparingen"],
+["88","OVAC nieuwe wreefsluiting aan bestaande schoen"],
+["88a","OVAC nieuwe wreefsluiting prefab"],
+["89","OVAC beugelbevestiging inclusief cambreur en hak"],
+["90","OVAC correctie orthopedische voorziening aan confectieschoen per uur"]
+],"regels":[
+"Bij OVAC met minder dan 3 aanpassingen gebruik je losse posten (71 t/m 90); bij meer dan 3 aanpassingen gebruik je cluster 70.",
+"Bij 1 OVAC altijd losse posten gebruiken, dus geen 0,5 paar kiezen.",
+"Steunzolen en inlays worden niet als OVAC gezien; steunzolen apart in rekening brengen.",
+
+"Proefschoen (09) door specialist motiveren op aanvraag voor vergoeding.",
+"Beenlengteverschil telt mee vanaf 3 cm of meer.",
+"PODO en huisarts mogen NIET voorschrijven; altijd medisch specialist of verpleegkundig specialist.",
+"Steunzolen vallen niet binnen de OVAC-vergoeding; apart aan de klant berekenen."
+]},
+
+"ASR":{"verzekeraars":["ASR","ASR Ik Kies Zelf"],"codes":[
+["70","OVAC per schoen, inclusief steunzolen"],
+["42","OSB per paar"],
+["03","OSA laag eerste voorziening"],
+["04","OSA laag herhaling / reserve"],
+["05","OSA hoog eerste voorziening"],
+["05+16A","OSA hoog eerste voorziening met enkelomsluiting 1 zijde"],
+["05+16aL+16aR","OSA hoog eerste voorziening met enkelomsluiting 2 zijdes"],
+["06","OSA hoog herhaling / reserve"],
+["06+16A","OSA hoog herhaling met enkelomsluiting 1 zijde"],
+["06+16aL+16aR","OSA hoog herhaling met enkelomsluiting 2 zijdes"],
+["07","OSA extra hoog eerste voorziening"],
+["07+17","OSA extra hoog eerste voorziening met enkelkoker 1 zijde"],
+["07+17L+17R","OSA extra hoog eerste voorziening met enkelkoker 2 zijdes"],
+["08","OSA extra hoog herhaling / reserve"],
+["08+17","OSA extra hoog herhaling met enkelkoker 1 zijde"],
+["08+17L+17R","OSA extra hoog herhaling met enkelkoker 2 zijdes"],
+["09","Proefschoen bij OSA hoog of extra hoog per stuk"],
+["01","VLOS per stuk"],
+["02","VLOS per paar"],
+["31","Orthopedische binnenschoen per stuk"],
+["41-0","Verbandschoenen per paar (21% BTW)"],
+["21","Reparatie uurtarief nazorg"],
+["22","Aanpassing uurtarief nazorg"]
+],"regels":[
+"ASR gebruikt combinatiecodes voor OSA hoog en extra hoog met enkelomsluiting (16A) of enkelkoker (17).",
+"Losse codes 16A en 17 niet meer apart gebruiken; altijd combineren met basispaar.",
+"Bij herhaling binnen gebruikstermijn kan toestemming of offerte nodig zijn.",
+"Verbandschoenen alleen vergoeden bij huiddefecten, ulcera, sensibiliteits-/circulatiestoornissen, na partiële amputatie, traumatische beschadiging of operatie aan de voet.",
+"Gebruikstermijn: minimaal 18 maanden na voorlaatste paar bij >16 jaar; 6 maanden bij <16 jaar.",
+"Reservepaar aanvragen 3 maanden na het eerste paar.",
+"Eigen bijdrage wordt verrekend via ASR (vanaf 2026)."]},
+
+"CZ":{"verzekeraars":["CZ","Nationale Nederlanden","PZP","OHRA","CZ Direct","Just"],"codes":[
+["1","VLOS per stuk"],
+["2","VLOS per paar"],
+["3","OSA laag eerste levering"],
+["4","OSA laag vervolg / reserve"],
+["05","OSA hoog zonder schachtversteviging eerste levering"],
+["06","OSA hoog zonder schachtversteviging vervolglevering"],
+["05+16A","OSA hoog met schachtversteviging eerste levering (enkel- of beiderzijds)"],
+["06+16A","OSA hoog met schachtversteviging vervolglevering (enkel- of beiderzijds)"],
+["7","OSA extra hoog eerste levering"],
+["8","OSA extra hoog vervolglevering"],
+["42","OSB per paar"],
+["41","Verbandschoenen (9% BTW)"],
+["70","OVAC clusterprijs per paar"],
+["30","Orthopedische binnenschoen bij amputatie middenvoet / volledig verlies tenen"],
+["31","Aanvullingsbinnenschoen bij amputatie in voetwortel (Chopart)"],
+["32","Aanvullingsbinnenschoen bij amputatie totale voet (Syme / Pyrogoff)"],
+["33","Orthopedische binnenschoen als arthrodese koker"],
+["34","Enkel-voet orthese (dynamisch)"],
+["35","Verkortingsbinnenschoen 2 t/m 5 cm"],
+["36","Verkortingsbinnenschoen 6 t/m 10 cm"],
+["37","Verkortingsbinnenschoen 11 t/m 15 cm"],
+["38","Correctie orthopedische binnenschoen per uur incl. materiaal"],
+["39","Werkzaamheden / voorzieningen niet op lijst, individuele prijsopgave"],
+["21A","Leestaanpassing"]
+],"regels":[
+"Bij CZ is OVAC in de basis cluster 70 (clusterprijs per paar).",
+"VLOS moet worden aangevraagd bij CZ; voorschrift van revalidatiearts + offerte vereist.",
+"Voor OSA hoog: onderscheid maken tussen zonder en met schachtversteviging.",
+"OSB: minimaal 2 van 3 aanpassingen (onderwerk, schacht, leest) nodig.",
+"Na 6 maanden reparatiewerkzaamheden aanvragen voor vergoeding (post 39).",
+"Verwijzing maximaal 3 maanden geldig bij eerste levering.",
+"Gebruikstermijn: 15 maanden na laatste paar bij >16 jaar; 9 maanden voor kinderen.",
+"Eenmalig reservepaar mogelijk na eerste paar; daarna altijd herhaling.",
+"OVAC heeft geen eigen bijdrage.",
+"Bij herhaling in dossier vermelden waarom vervanging noodzakelijk is.",
+"Let op: altijd maar 1x RES. Ook na een nieuw concept 1e paar is het vervolgpaar altijd HER.",
+"Na 1e paar nieuw concept is na 3 maanden een wisselpaar mogelijk, maar dit moet aangevraagd worden en als HER gedeclareerd worden."]},
+
+"DSW":{"verzekeraars":["DSW","Stad Holland","RMA"],"codes":[
+["01","VLOS voorlopige orthopedische schoenen per stuk incl. materiaal"],
+["02","VLOS voorlopige orthopedische schoenen per paar incl. materiaal"],
+["03","OSA laag — eerste paar"],
+["04","OSA laag — herhalingspaar"],
+["05","OSA hoog — eerste paar"],
+["06","OSA hoog — herhalingspaar"],
+["07","OSA extra hoog — eerste paar (vanaf 10 cm boven mediale enkel)"],
+["08","OSA extra hoog — herhalingspaar"],
+["09","Proefschoen per stuk, vaak alleen bij eerste verstrekking of op medische indicatie"],
+["10","Verhoging / relatieve verkorting 1 t/m 8 cm in supplement"],
+["11","Verhoging / relatieve verkorting 6 cm of meer verwerkt tussen voering en overleer"],
+["14","Aanvulling lengte/breedte verhouding vanaf 3 cm voetlengteverschil en/of 2 cm breedteverschil"],
+["15","Zoolverstijving"],
+["16","Mediaal en/of lateraal ezelsoor aan supplement of tussen voering en overleer, incl. schoring"],
+["16a","Enkelkoker statisch / dynamisch vast aan supplement"],
+["17","Enkelkoker statisch / dynamisch verwerkt tussen voering en overleer, uitsluitend als module op basis 07"],
+["18","Voorzieningen bij amputatie van middenvoet of volledig verlies van tenen"],
+["19","Voorziening bij amputatie in de voetwortel"],
+["20","Voorziening voor totale voetamputatie"],
+["21","Correctie van orthopedische schoenen per uur inclusief materiaal"],
+["22","Werkzaamheden of voorzieningen niet op de lijst, individuele prijsopgave"],
+["30","Orthopedische binnenschoen bij amputatie van middenvoet of volledig verlies van tenen"],
+["31","Aanvullingsbinnenschoen bij amputatie in voetwortel"],
+["32","Aanvullingsbinnenschoen bij amputatie van totale voet"],
+["33","Orthopedische binnenschoen als arthrodese koker"],
+["34","Enkel-voet orthese"],
+["35","Verkortingsbinnenschoen 2 t/m 5 cm"],
+["36","Verkortingsbinnenschoen 6 t/m 10 cm"],
+["37","Verkortingsbinnenschoen 11 t/m 15 cm"],
+["38","Correctie van orthopedische binnenschoen per uur inclusief materiaal"],
+["39","Werkzaamheden of voorzieningen niet op deze lijst, individuele prijsopgave"],
+["40","SOS consult, maatnemen, afleveren en nazorg per levering"],
+["41","Confectieverbandschoenen (9% BTW)"],
+["42","B-schoenen verkoopprijs: inkoop + toeslag 125% per levering met max toeslag"],
+["43","Supplement individueel"],
+["44","Supplement individueel met mediale en/of laterale enkelkap versteviging tot over de enkel"],
+["45","Pro-supinatiewig (zool + hak)"],
+["46","Eenvoudige afwikkelrol, opgezet bv. jonesbalk, versnelde afwikkeling"],
+["47","Gecompliceerde afwikkelrol met slijtlaag, richtingsafwikkeling, uitsparingen, meerfasenafwikkeling, hallux rigidus"],
+["48","Hakverhoging over of verlaging van de bestaande hak tot 2 cm"],
+["49","Hakzoolverhoging niet bekleed 1 t/m 3 cm"],
+["50","Hakzoolverhoging niet bekleed 3 t/m 7 cm"],
+["51","Hakzoolverhoging niet bekleed vanaf 7 cm of meer"],
+["53","Hakzoolverhoging bekleed 3 t/m 7 cm"],
+["54","Hakzoolverhoging bekleed 7 cm of meer"],
+["56","Aangepaste hakken zoals sleehak, bufferhak, geschoorde hak, afrolhak, vleugelhak"],
+["57","Zoolverstijving exclusief afwikkeling en hakaanpassing"],
+["58","Drukvrij maken door uitzetten van de schacht"],
+["59","Drukvrij maken van exostose aan de voet in de schacht met polstering en/of uitsparingen"],
+["60","Nieuwe wreefsluiting aan bestaande schoen"],
+["61","Beugelbevestiging inclusief cambreur en hak"],
+["62","Correctie van orthopedische B-schoenen per uur inclusief materiaal"],
+["63","Werkzaamheden of voorzieningen niet op deze lijst, individuele prijsopgave"],
+["70","OVAC consult, maatnemen, afleveren en nazorg per levering"],
+["71","OVAC supplement individueel"],
+["72","OVAC supplement met mediale en/of laterale enkelkap versteviging tot over de enkel"],
+["73","OVAC pro-supinatiewig (zool + hak)"],
+["74","OVAC (gecompliceerde) afwikkelrol en hakaanpassing van bestaande hak t/m 2 cm"],
+["77","OVAC hakzoolverhoging niet bekleed 1 t/m 4 cm"],
+["78","OVAC hakzoolverhoging niet bekleed 5 t/m 6 cm"],
+["81","OVAC hakzoolverhoging bekleed vanaf 6 cm"],
+["84","OVAC aangepaste hakken"],
+["85","OVAC zoolverstijving exclusief afwikkeling en hakaanpassing"],
+["88","OVAC nieuwe wreefsluiting aan bestaande schoen"],
+["88a","OVAC nieuwe wreefsluiting aan bestaande schoen prefab"],
+["89","OVAC beugelbevestiging inclusief cambreur en hak"],
+["90","OVAC correctie van orthopedische voorziening aan confectieschoen per uur inclusief materiaal"],
+["91","OVAC werkzaamheden of voorzieningen niet op deze lijst, individuele prijsopgave"]
+],"regels":[
+"Alle modulaire codes 43 t/m 63 worden per stuk berekend.",
+"Alle OVAC-codes 71 t/m 91 worden per stuk berekend.",
+"Codes 75, 76, 79, 80, 82, 86 en 87 zijn vervallen in de DSW-lijst.",
+"Maximaal 2x per jaar OVAC; DSW kijkt niet naar de maand.",
+"Eenvoudige hakaanpassingen tot 4 cm zonder verdere aanpassingen komen niet voor vergoeding in aanmerking.",
+"Bij herhaling: toelichting geven. Buiten garantie: offerte aanvragen bij DSW.",
+"PODO mag niet voorschrijven; altijd behandelend arts of verpleegkundig specialist.",
+"Reservepaar: 36 maanden na laatste reservepaar.",
+"Gebruikstermijn kinderen tot 16 jaar: 6 maanden.",
+"Inkoopprijs OSB excl. BTW — eerst overleggen met verantwoordelijke."]},
+
+"Eucare/Aevitae/Caresq":{"verzekeraars":["Eucare","Aevitae","Care4Life","Laef!"],"codes":[
+["41.0","Verbandschoenen (21% BTW)"],
+["42","OSB laag / hoog / extra hoog"],
+["01","VLOS per stuk"],
+["02","VLOS per paar"],
+["03","OSA laag eerste voorziening"],
+["04","OSA laag vervolglevering"],
+["05","OSA hoog eerste voorziening"],
+["06","OSA hoog vervolglevering"],
+["07+17","OSA extra hoog eerste voorziening 1 laars"],
+["08+17","OSA extra hoog vervolglevering 1 laars"],
+["07+17+17","OSA extra hoog eerste voorziening 2 laarzen"],
+["08+17+17","OSA extra hoog vervolglevering 2 laarzen"],
+["30","Orthopedische binnenschoen eerste voorziening"],
+["70","OVAC maatnemen / afleveren / nazorg (basispost)"],
+["71","OVAC supplement individueel"],
+["72","OVAC supplement met mediale/laterale enkelkap versteviging"],
+["75","OVAC gecompliceerde afwikkelrol met slijtlaag"],
+["76","OVAC hakaanpassing bestaande hak t/m 2 cm (alleen i.c.m. afwikkelrol)"],
+["50","OVAC onderwerk verhogen 2 cm of meer"],
+["84","OVAC aangepaste hakken (sleehak, bufferhak, afrolhak e.d.)"],
+["85","OVAC zoolverstijving (excl. afwikkeling en hakaanpassing)"],
+["88","OVAC nieuwe wreefsluiting aan bestaande schoen"]
+],"regels":[
+"Diverse OVAC-posten zijn vervallen (o.a. eenvoudige afwikkelrol, exostose-behandeling); gebruik alleen de posten in deze lijst.",
+"OVAC: geen toestemming nodig bij reguliere reserve/herhaling.",
+"Vervanging binnen termijn: verwijzing nodig.",
+"PODO mag niet voorschrijven; altijd specialist of PA/VS.",
+"Wisselpaar: 36 maanden na laatste wisselpaar.",
+"Gebruikstermijn kinderen tot 16 jaar: 6 maanden.",
+"VLOS wordt vergoed voor de gehele periode, ongeacht het aantal herhalingen."]},
+
+"Menzis":{"verzekeraars":["Menzis","Anderzorg","VinkVink"],"codes":[
+["70","Cluster OVAC per stuk (min. 2 aanpassingen excl. steunzool)"],
+["42","Cluster OSB per paar"],
+["03","Cluster OSA laag eerste voorziening"],
+["04","Cluster OSA laag vervolglevering"],
+["05","Cluster OSA hoog eerste voorziening"],
+["06","Cluster OSA hoog vervolglevering"],
+["16a","Toeslag enkelkoker per stuk bij OSA hoog"],
+["07","Cluster OSA extra hoog eerste voorziening"],
+["08","Cluster OSA extra hoog vervolglevering"],
+["17","Toeslag enkelkoker per stuk bij OSA extra hoog"],
+["n.v.t.","Cluster EVO per stuk (verkortingsbinnenschoen / binnenschoen bij amputatie / enkel-voet orthese)"],
+["01","Cluster VLOS per stuk"],
+["02","Cluster VLOS per paar (Menzis Zorgkantoor)"],
+["41","Cluster verbandschoenen per stuk (21% BTW)"]
+],"regels":[
+"Menzis werkt met clusters; weinig losse posten.",
+"OVAC alleen bij 2 of meer aanpassingen aan de schoen die niet via een steunzool kunnen worden aangebracht.",
+"Kokertoeslag (16a / 17) per stuk apart declareren naast het basispaar.",
+"Bij vervanging wegens slijtage: vastleggen wat versleten is en foto maken.",
+"Beenlengteverschil telt mee vanaf 4 cm of meer.",
+"Altijd voorschrift van medisch specialist of PA/VS vereist.",
+"Bij 1e RES na 1e paar nieuw concept: altijd naar de laatste RES van het oude concept kijken. Indien nog binnen termijn, dan altijd aanvragen.",
+"Wisselpaar aanvragen na 24 maanden.",
+"Bij vervanging wegens slijtage: foto maken en vastleggen wat versleten is.",
+"EVO niet combineren met laarzen; laarzen zijn op zichzelf al een orthese.",
+"OVAC minimaal 2 aanpassingen; bij hakverhoging pas bij 4 cm of meer declareren."]},
+
+"NTAC":{"verzekeraars":["NTAC"],"codes":[
+["1.0","OSA laag — eerste paar"],
+["1.0H","OSA laag — herhalingspaar"],
+["2.0","OSA hoog eerste paar excl. enkelversteviging"],
+["2.1","OSA hoog eerste paar incl. enkelversteviging enkelzijdig"],
+["2.2","OSA hoog eerste paar incl. enkelversteviging beiderzijds"],
+["2.3","OSA hoog eerste paar incl. enkelkoker enkelzijdig"],
+["2.4","OSA hoog eerste paar incl. enkelkoker beiderzijds"],
+["2.0H","OSA hoog herhalingspaar excl. enkelversteviging"],
+["2.1H","OSA hoog herhalingspaar incl. enkelversteviging enkelzijdig"],
+["2.2H","OSA hoog herhalingspaar incl. enkelversteviging beiderzijds"],
+["2.3H","OSA hoog herhalingspaar incl. enkelkoker enkelzijdig"],
+["2.4H","OSA hoog herhalingspaar incl. enkelkoker beiderzijds"],
+["3.0","OSA extra hoog eerste paar incl. enkelkoker enkelzijdig"],
+["3.1","OSA extra hoog eerste paar incl. enkelkoker beiderzijds"],
+["3.0H","OSA extra hoog herhalingspaar incl. enkelkoker enkelzijdig"],
+["3.1H","OSA extra hoog herhalingspaar incl. enkelkoker beiderzijds"],
+["4.0","OSB per paar incl. alle benodigde voorzieningen"],
+["9.0","MCO per paar incl. alle benodigde voorzieningen"],
+["5.0","OVAC eenvoudig excl. aanschaf schoenen"],
+["5.1","OVAC uitgebreid excl. aanschaf schoenen"],
+["6.0","VLOS per stuk"],
+["6.1","VLOS per paar"],
+["7.0","Verbandschoenen per stuk"],
+["7.1","Verbandschoenen per paar"],
+["8.0","Diversen — uurloon aanpassingen niet in tariefbijlage (€ 89,38)"]
+],"regels":[
+"NTAC maakt onderscheid tussen OVAC eenvoudig (70.E) en uitgebreid (70.U).",
+"Extra hoog OSA = minimaal 10 cm boven de malleoli.",
+"OSB moet voorzien zijn van NVOS-keurmerk.",
+"Toestemming NTAC altijd vereist, ook bij reserve/herhaling.",
+"VLOS en verbandschoenen worden zeer slecht vergoed.",
+"Toestemming NTAC vereist bij zowel eerste levering, reserve als herhaling.",
+"Gebruikstermijn kinderen tot 16 jaar: 12 maanden voor OSA/OSB/OVAC.",
+"VLOS gebruikstermijn: 9 maanden."]},
+
+"ONVZ":{"verzekeraars":["ONVZ","VvAA","ONVZ Expats"],"codes":[
+["42","OSB per paar"],
+["03","OSA laag eerste voorziening"],
+["04","OSA laag vervolglevering"],
+["05","OSA hoog eerste voorziening"],
+["06","OSA hoog vervolglevering"],
+["07","OSA extra hoog eerste voorziening (vanaf 20 cm boven mediale enkel)"],
+["08","OSA extra hoog vervolglevering"],
+["16a","Enkelomsluiting bij OSA hoog en extra hoog per stuk"],
+["17","Enkelkoker bij OSA hoog en extra hoog per stuk"],
+["70","OVAC per schoen / stuk (steunzolen vallen hier niet onder)"],
+["30","Orthopedische binnenschoen"],
+["41.0","Verbandschoenen per paar (21% BTW)"],
+["01","VLOS per stuk"],
+["02","VLOS per paar"]
+],"regels":[
+"Enkelkokers (17) en enkelomsluitingen (16a) worden per stuk betaald, niet per levering.",
+"Steunzolen en inlays vallen niet binnen OVAC; steunzolen apart in rekening brengen (€150).",
+"Toestemming nodig bij vervanging binnen termijn.",
+"OSA en OSB: voorschrift medisch specialist vereist. OVAC: huisarts voldoende.",
+"Gebruikstermijn: 18 maanden bij >16 jaar; 6 maanden bij <16 jaar.",
+"Reservepaar: 3 maanden na het eerste paar aanvragen.",
+"Bij kinderen onder 16 jaar niet aanvragen bij groei; dit is geaccepteerde reden."]},
+
+"Salland":{"verzekeraars":["Salland","Holland Zorg","Zorg Direct"],"codes":[
+["42","OSB eerste / vervolg / wisselpaar"],
+["25","MCO eerste / vervolg / wisselpaar"],
+["03","OSA laag eerste paar"],
+["04","OSA laag vervolgpaar"],
+["05","OSA hoog eerste paar"],
+["06","OSA hoog vervolgpaar"],
+["05+16","OSA hoog met flexomsluiting 1 zijde, eerste paar"],
+["06+16","OSA hoog met flexomsluiting 1 zijde, vervolgpaar"],
+["05+16L+16R","OSA hoog met flexomsluiting 2 zijdes, eerste paar"],
+["06+16L+16R","OSA hoog met flexomsluiting 2 zijdes, vervolgpaar"],
+["05+16a","OSA hoog met dynamische koker 1 zijde, eerste paar"],
+["06+16a","OSA hoog met dynamische koker 1 zijde, vervolgpaar"],
+["05+16aL+16aR","OSA hoog met dynamische koker 2 zijdes, eerste paar"],
+["06+16aL+16aR","OSA hoog met dynamische koker 2 zijdes, vervolgpaar"],
+["07","OSA extra hoog eerste paar"],
+["08","OSA extra hoog vervolgpaar"],
+["07+17","OSA extra hoog met statische koker 1 zijde, eerste paar"],
+["08+17","OSA extra hoog met statische koker 1 zijde, vervolgpaar"],
+["07+17L+17R","OSA extra hoog met statische koker 2 zijdes, eerste paar"],
+["08+17L+17R","OSA extra hoog met statische koker 2 zijdes, vervolgpaar"],
+["70","OVAC per schoen (steunzolen niet inbegrepen, apart declareren)"],
+["30","Orthopedische binnenschoen"],
+["41","Verbandschoenen per paar (21% BTW)"],
+["nvt","Allergeenvrije schoen per paar"],
+["01","VLOS per stuk"],
+["02","VLOS per paar"]
+],"regels":[
+"Extra hoog OSA = minimaal 10 cm boven de malleolus.",
+"Bij OVAC zitten steunzolen er niet bij; steunzolen apart declareren (€150/€220).",
+"OSB: minimaal 2 aanpassingen vereist. Overweeg MCO bij extra voorzieningen.",
+"VLOS en verbandschoenen worden zeer slecht vergoed.",
+"Voor reguliere vervanging geen machtiging nodig; bij te vroege vervanging wel aanvragen.",
+"OVAC max. 4 stuks aanpassingen per kalenderjaar.",
+"Gebruikstermijn: 18 maanden voor eerste en herhalingspaar; wisselpaar 36 maanden.",
+"OSB wordt lager vergoed; bij extra voorzieningen overstappen naar MCO.",
+"NIMCO is altijd MCO. Stock-schoenen zijn OSB.",
+"Kinderen tot 16 jaar: gebruikstermijn 9 maanden."]},
+
+"VGZ":{"verzekeraars":["VGZ","Bewuzt","IZZ","UMC","IZA","Univé","Zekur","Besured"],"codes":[
+["41","Verbandschoenen (9% BTW)"],
+["nvt","Allergeenvrije schoenen (niet zijnde orthopedische schoenen)"],
+["70","OVAC incl. steunzool (werkelijke kosten tot maximumbedrag, min. 3 aanpassingen per schoen)"],
+["42","OSB (semi-orthopedische schoenen)"],
+["25","MCO (orthopedische schoenen conform modulair concept)"],
+["30","Aanvullingsprothese bij amputatie middenvoet / volledig verlies tenen"],
+["31","Aanvullingsprothese bij amputatie in voetwortel (Chopart)"],
+["32","Aanvullingsprothese bij amputatie totale voet (Syme / Pyrogoff)"],
+["33","Orthese als arthrodese koker (binnenschoen)"],
+["34","Maatwerk dynamische enkel-voet orthese (minimaal 3 cm boven spierbuik kuit)"],
+["35","Verkortingsbinnenschoen 2 t/m 5 cm"],
+["36","Verkortingsbinnenschoen 6 t/m 10 cm"],
+["37","Verkortingsbinnenschoen 11 t/m 15 cm"],
+["03","OSA laag eerste / vervolglevering"],
+["05","OSA hoog eerste / vervolglevering (16a zit in clusterprijs, niet apart)"],
+["07+17","OSA extra hoog met uitgebreide voorzieningen aan 1 laars, eerste levering"],
+["07+17L+17R","OSA extra hoog met uitgebreide voorzieningen aan beide laarzen, eerste levering"],
+["08+17","OSA extra hoog met uitgebreide voorzieningen aan 1 laars, vervolglevering"],
+["08+17L+17R","OSA extra hoog met uitgebreide voorzieningen aan beide laarzen, vervolglevering"],
+["01","VLOS met uitgebreide voorzieningen aan 1 zijde (vergoeding geldt voor hele periode)"],
+["02","VLOS met uitgebreide voorzieningen aan beide zijden"]
+],"regels":[
+"Extra hoog OSA (post 07): schachthoogte van minimaal 16 cm.",
+"OVAC: minimaal 3 aanpassingen per schoen vereist (naast het aanmeten).",
+"OSA hoog: 16a zit al in de clusterprijs; niet apart declareren.",
+"Prothesen/orthesen alleen in combinatie met OSB of OVAC; nooit in combinatie met OSA.",
+"VLOS uitsluitend op voorschrift van revalidatiearts en bij ernstige trofische stoornis.",
+"Bij OSB: merk, type en artikelnummer vermelden op het declaratieformulier.",
+"Geen huisartsverwijzing meer voor OSA; altijd medisch specialist vereist.",
+"Foto of 3D-scan van naakte voeten (belast en onbelast) aanwezig in dossier.",
+"OSB: geen MCO/NIMCO meer bij nieuwe klanten. Bij bestaande klanten overstappen naar MCO overwegen."
+]},
+
+"Zorg en Zekerheid":{"verzekeraars":["Zorg en Zekerheid","AZVZ","ZEM"],"codes":[
+["70","OVAC per stuk incl. steunzool"],
+["42","OSB per paar"],
+["03","OSA laag eerste paar"],
+["04","OSA laag herhaling"],
+["05","OSA hoog eerste paar"],
+["06","OSA hoog herhaling"],
+["07","OSA extra hoog eerste paar"],
+["08","OSA extra hoog herhaling"],
+["16a","Enkelomsluiting bij OSA hoog en extra hoog per stuk (max. 2 per paar)"],
+["17","Enkelkoker bij OSA hoog en extra hoog per stuk (max. 2 per paar)"],
+["30","Orthopedische binnenschoen"],
+["41.0","Verbandschoenen per paar (21% BTW)"],
+["nvt","Allergeenvrije schoen per paar"],
+["01","VLOS per stuk"],
+["02","VLOS per paar"]
+],"regels":[
+"OVAC: maximaal 2 paar of 2 stuks per 12 maanden (bij 1 voet: 2 stuks).",
+"Minimale gebruikstermijn OVAC is 12 maanden.",
+"OVAC/OSB: voorschrift behandelend arts of PA onder regie van behandelend arts.",
+"OSA: voorschrift medisch specialist of verpleegkundig specialist onder regie van specialist.",
+"Reparaties buiten garantietermijn tot €75 machtigingsvrij declareren.",
+"Bij vervanging buiten termijn zonder gewijzigde medische indicatie: geen toestemming nodig.",
+"Gebruikstermijn kinderen tot 16 jaar: 6 maanden.",
+"Gebruikstermijn: 18 maanden; wisselpaar ook 18 maanden.",
+"Laagcomplexe zorg (preventief bij reuma/diabetes/vaatlijden zonder wonden): podo mag voorschrijven onder regie van huisarts, mits vermeld als laagcomplexe zorg."]}
+};
+
+const rulesEngine = {
+  Achmea(v){
+    const m = {
+      'VLOS per stuk': [['01','VLOS per stuk']],
+      'VLOS per paar': [['02','VLOS per paar']],
+      'OSA laag eerste': [['03','OSA laag — eerste voorziening']],
+      'OSA laag vervolg / reserve': [['04','OSA laag — vervolg / reserve / herhaling']],
+      'OSA hoog eerste': [['05','OSA hoog — eerste voorziening']],
+      'OSA hoog vervolg / reserve': [['06','OSA hoog — vervolg / reserve / herhaling']],
+      'OSA extra hoog eerste': [['07','OSA extra hoog — eerste voorziening']],
+      'OSA extra hoog vervolg / reserve': [['08','OSA extra hoog — vervolg / reserve / herhaling']],
+      'Proefschoen (09)': [['09','Proefschoen per kant']],
+      'Enkelkoker supplement (16a)': [['16a','Enkelkoker statisch/dynamisch vast aan supplement']],
+      'Enkelkoker overleer (17)': [['17','Enkelkoker verwerkt tussen voering en overleer (alleen bij 07)']],
+      'Verbandschoenen': [['41.0','Verbandschoenen (21% BTW)']],
+      'OSB': [['42','OSB laag / hoog / extra hoog']],
+      'OVAC cluster 70 (meer dan 3 aanpassingen)': [['70','OVAC consult, maatnemen, afleveren en nazorg (clusterprijs — gebruik bij 3 of meer aanpassingen)']],
+      'OVAC losse post 70 (basispost)': [['70','OVAC consult, maatnemen, afleveren en nazorg (basispost — gebruik bij minder dan 3 aanpassingen)']],
+      'OVAC supplement individueel (71)': [['71','OVAC supplement individueel']],
+      'OVAC supplement met enkelkap (72)': [['72','OVAC supplement met mediale/laterale enkelkap versteviging']],
+      'OVAC pro-supinatiewig (73)': [['73','OVAC pro-supinatiewig (zool + hak)']],
+      'OVAC eenvoudige afwikkelrol (74)': [['74','OVAC eenvoudige afwikkelrol']],
+      'OVAC gecompliceerde afwikkelrol (75)': [['75','OVAC gecompliceerde afwikkelrol met slijtlaag']],
+      'OVAC hakaanpassing bestaande hak (76)': [['76','OVAC hakaanpassing bestaande hak t/m 2 cm (i.c.m. 74 of 75)']],
+      'OVAC hakzoolverhoging 1-3 cm (77)': [['77','OVAC hakzoolverhoging niet bekleed 1 t/m 3 cm']],
+      'OVAC hakzoolverhoging 3-7 cm (78)': [['78','OVAC hakzoolverhoging niet bekleed 3 t/m 7 cm']],
+      'OVAC hakzoolverhoging 7+ cm (79)': [['79','OVAC hakzoolverhoging niet bekleed vanaf 7 cm']],
+      'OVAC hakzoolverhoging bekleed 3-7 cm (81)': [['81','OVAC hakzoolverhoging bekleed 3 t/m 7 cm']],
+      'OVAC hakzoolverhoging bekleed 7+ cm (82)': [['82','OVAC hakzoolverhoging bekleed 7 cm of meer']],
+      'OVAC aangepaste hakken (84)': [['84','OVAC aangepaste hakken (sleehak, bufferhak, afrolhak e.d.)']],
+      'OVAC zoolverstijving (85)': [['85','OVAC zoolverstijving (excl. afwikkeling en hakaanpassing)']],
+      'OVAC drukvrij schacht (86)': [['86','OVAC drukvrij maken via uitzetten schacht']],
+      'OVAC drukvrij exostose (87)': [['87','OVAC drukvrij maken van exostose in schacht']],
+      'OVAC wreefsluiting (88)': [['88','OVAC nieuwe wreefsluiting aan bestaande schoen']],
+      'OVAC wreefsluiting prefab (88a)': [['88a','OVAC nieuwe wreefsluiting prefab']],
+      'OVAC beugelbevestiging (89)': [['89','OVAC beugelbevestiging inclusief cambreur en hak']],
+      'OVAC correctie per uur (90)': [['90','OVAC correctie orthopedische voorziening per uur']],
+    };
+    return m[v] || [];
+  },
+  ASR(v){
+    const m = {
+      'OVAC per schoen': [['70','OVAC per schoen, inclusief steunzolen']],
+      'OSB per paar': [['42','OSB per paar']],
+      'OSA laag eerste': [['03','OSA laag — eerste voorziening']],
+      'OSA laag herhaling / reserve': [['04','OSA laag — herhaling / reserve']],
+      'OSA hoog eerste': [['05','OSA hoog — eerste voorziening']],
+      'OSA hoog eerste + enkelomsluiting 1 zijde': [['05+16A','OSA hoog eerste + enkelomsluiting 1 zijde']],
+      'OSA hoog eerste + enkelomsluiting 2 zijdes': [['05+16aL+16aR','OSA hoog eerste + enkelomsluiting 2 zijdes']],
+      'OSA hoog herhaling / reserve': [['06','OSA hoog — herhaling / reserve']],
+      'OSA hoog herhaling + enkelomsluiting 1 zijde': [['06+16A','OSA hoog herhaling + enkelomsluiting 1 zijde']],
+      'OSA hoog herhaling + enkelomsluiting 2 zijdes': [['06+16aL+16aR','OSA hoog herhaling + enkelomsluiting 2 zijdes']],
+      'OSA extra hoog eerste': [['07','OSA extra hoog — eerste voorziening']],
+      'OSA extra hoog eerste + enkelkoker 1 zijde': [['07+17','OSA extra hoog eerste + enkelkoker 1 zijde']],
+      'OSA extra hoog eerste + enkelkoker 2 zijdes': [['07+17L+17R','OSA extra hoog eerste + enkelkoker 2 zijdes']],
+      'OSA extra hoog herhaling / reserve': [['08','OSA extra hoog — herhaling / reserve']],
+      'OSA extra hoog herhaling + enkelkoker 1 zijde': [['08+17','OSA extra hoog herhaling + enkelkoker 1 zijde']],
+      'OSA extra hoog herhaling + enkelkoker 2 zijdes': [['08+17L+17R','OSA extra hoog herhaling + enkelkoker 2 zijdes']],
+      'Proefschoen OSA hoog / extra hoog (09)': [['09','Proefschoen bij OSA hoog of extra hoog per stuk']],
+      'VLOS per stuk': [['01','VLOS per stuk']],
+      'VLOS per paar': [['02','VLOS per paar']],
+      'Orthopedische binnenschoen (31)': [['31','Orthopedische binnenschoen per stuk']],
+      'Verbandschoenen': [['41-0','Verbandschoenen per paar (21% BTW)']],
+      'Reparatie nazorg per uur (21)': [['21','Reparatie uurtarief nazorg']],
+      'Aanpassing nazorg per uur (22)': [['22','Aanpassing uurtarief nazorg']],
+    };
+    return m[v] || [];
+  },
+  CZ(v){
+    const m = {
+      'VLOS per stuk': [['03','VLOS per stuk']],
+      'VLOS per paar': [['04','VLOS per paar']],
+      'OSA laag eerste levering': [['03','OSA laag — eerste levering']],
+      'OSA laag vervolg / reserve': [['04','OSA laag — vervolg / reserve']],
+      'OSA hoog zonder schachtversteviging eerste': [['05','OSA hoog zonder schachtversteviging — eerste levering']],
+      'OSA hoog zonder schachtversteviging vervolg': [['06','OSA hoog zonder schachtversteviging — vervolglevering']],
+      'OSA hoog met schachtversteviging eerste': [['05+16A','OSA hoog met schachtversteviging — eerste levering']],
+      'OSA hoog met schachtversteviging vervolg': [['06+16A','OSA hoog met schachtversteviging — vervolglevering']],
+      'OSA extra hoog eerste levering': [['07','OSA extra hoog — eerste levering']],
+      'OSA extra hoog vervolglevering': [['08','OSA extra hoog — vervolglevering']],
+      'OSB per paar': [['42','OSB — eerste of vervolglevering']],
+      'Verbandschoenen': [['41','Verbandschoenen']],
+      'OVAC clusterprijs': [['70','OVAC clusterprijs per paar']],
+      'Binnenschoen amputatie middenvoet (30)': [['30','Orthopedische binnenschoen bij amputatie middenvoet / verlies tenen']],
+      'Binnenschoen amputatie voetwortel / Chopart (31)': [['31','Aanvullingsbinnenschoen bij amputatie voetwortel']],
+      'Binnenschoen totale voetamputatie / Syme (32)': [['32','Aanvullingsbinnenschoen bij amputatie totale voet']],
+      'Binnenschoen als arthrodese koker (33)': [['33','Orthopedische binnenschoen als arthrodese koker']],
+      'Enkel-voet orthese dynamisch (34)': [['34','Enkel-voet orthese (dynamisch)']],
+      'Verkortingsbinnenschoen 2-5 cm (35)': [['35','Verkortingsbinnenschoen 2 t/m 5 cm']],
+      'Verkortingsbinnenschoen 6-10 cm (36)': [['36','Verkortingsbinnenschoen 6 t/m 10 cm']],
+      'Verkortingsbinnenschoen 11-15 cm (37)': [['37','Verkortingsbinnenschoen 11 t/m 15 cm']],
+      'Correctie binnenschoen per uur (38)': [['38','Correctie orthopedische binnenschoen per uur']],
+      'Reparatie / aanpassing buiten lijst (39)': [['39','Werkzaamheden / voorzieningen op individuele prijsopgave']],
+      'Leestaanpassing (21A)': [['21A','Leestaanpassing']],
+    };
+    return m[v] || [];
+  },
+  DSW(v){
+    const m = {
+      'VLOS per stuk (01)': [['01','VLOS per stuk incl. materiaal']],
+      'VLOS per paar (02)': [['02','VLOS per paar incl. materiaal']],
+      'OSA laag eerste (03)': [['03','OSA laag — eerste paar']],
+      'OSA laag herhaling (04)': [['04','OSA laag — herhalingspaar']],
+      'OSA laag vervolg (04)': [['04','Lage orthopedische schoenen vervolg']],
+      'OSA hoog eerste (05)': [['05','OSA hoog — eerste paar']],
+      'OSA hoog herhaling (06)': [['06','OSA hoog — herhalingspaar']],
+      'OSA hoog vervolg (06)': [['06','Hoge orthopedische schoenen vervolg']],
+      'OSA extra hoog eerste (07)': [['07','OSA extra hoog — eerste paar (vanaf 10 cm boven mediale enkel)']],
+      'OSA extra hoog herhaling (08)': [['08','OSA extra hoog — herhalingspaar']],
+      'OSA extra hoog vervolg (08)': [['08','OSA extra hoog vanaf 10 cm — vervolg']],
+      'Proefschoen (09)': [['09','Proefschoen per stuk']],
+      'Verhoging / verkorting 1-8 cm supplement (10)': [['10','Verhoging / relatieve verkorting 1 t/m 8 cm in supplement']],
+      'Verhoging / verkorting 6+ cm overleer (11)': [['11','Verhoging / relatieve verkorting 6+ cm verwerkt in overleer']],
+      'Lengte-breedteverschil (14)': [['14','Aanvulling lengte/breedte verhouding']],
+      'Zoolverstijving (15)': [['15','Zoolverstijving']],
+      'Ezelsoor mediaal/lateraal (16)': [['16','Mediaal/lateraal ezelsoor incl. schoring']],
+      'Enkelkoker supplement (16a)': [['16a','Enkelkoker statisch/dynamisch vast aan supplement']],
+      'Enkelkoker overleer (17)': [['17','Enkelkoker verwerkt in overleer (alleen bij 07)']],
+      'Amputatie middenvoet / verlies tenen (18)': [['18','Voorziening bij amputatie middenvoet of verlies tenen']],
+      'Amputatie voetwortel (19)': [['19','Voorziening bij amputatie in de voetwortel']],
+      'Totale voetamputatie (20)': [['20','Voorziening voor totale voetamputatie']],
+      'Correctie OSA per uur (21)': [['21','Correctie orthopedische schoenen per uur incl. materiaal']],
+      'Werkzaamheden op opgave OSA (22)': [['22','Werkzaamheden / voorzieningen niet op lijst']],
+      'Binnenschoen amputatie middenvoet (30)': [['30','Binnenschoen bij amputatie middenvoet / verlies tenen']],
+      'Binnenschoen amputatie voetwortel / Chopart (31)': [['31','Aanvullingsbinnenschoen bij amputatie voetwortel']],
+      'Binnenschoen totale voetamputatie / Syme (32)': [['32','Aanvullingsbinnenschoen bij amputatie totale voet']],
+      'Binnenschoen als arthrodese koker (33)': [['33','Orthopedische binnenschoen als arthrodese koker']],
+      'Enkel-voet orthese (34)': [['34','Enkel-voet orthese']],
+      'Verkortingsbinnenschoen 2-5 cm (35)': [['35','Verkortingsbinnenschoen 2 t/m 5 cm']],
+      'Verkortingsbinnenschoen 6-10 cm (36)': [['36','Verkortingsbinnenschoen 6 t/m 10 cm']],
+      'Verkortingsbinnenschoen 11-15 cm (37)': [['37','Verkortingsbinnenschoen 11 t/m 15 cm']],
+      'Correctie binnenschoen per uur (38)': [['38','Correctie binnenschoen per uur incl. materiaal']],
+      'Werkzaamheden op opgave binnenschoen (39)': [['39','Werkzaamheden / voorzieningen niet op lijst']],
+      'SOS consult / maatnemen / nazorg (40)': [['40','SOS consult, maatnemen, afleveren en nazorg']],
+      'Verbandschoenen (41)': [['41','Confectieverbandschoenen']],
+      'OSB / B-schoenen (42)': [['42','B-schoenen: inkoop + toeslag 125%']],
+      'Supplement individueel (43)': [['43','Supplement individueel']],
+      'Supplement met enkelkap (44)': [['44','Supplement met mediale/laterale enkelkap versteviging']],
+      'Pro-supinatiewig (45)': [['45','Pro-supinatiewig (zool + hak)']],
+      'Eenvoudige afwikkelrol (46)': [['46','Eenvoudige afwikkelrol (jonesbalk / versnelde afwikkeling)']],
+      'Gecompliceerde afwikkelrol (47)': [['47','Gecompliceerde afwikkelrol met slijtlaag']],
+      'Hakverlaging / verhoging bestaande hak (48)': [['48','Hakverhoging of verlaging bestaande hak tot 2 cm']],
+      'Hakzoolverhoging niet bekleed 1-3 cm (49)': [['49','Hakzoolverhoging niet bekleed 1 t/m 3 cm']],
+      'Hakzoolverhoging niet bekleed 3-7 cm (50)': [['50','Hakzoolverhoging niet bekleed 3 t/m 7 cm']],
+      'Hakzoolverhoging niet bekleed 7+ cm (51)': [['51','Hakzoolverhoging niet bekleed vanaf 7 cm']],
+      'Hakzoolverhoging bekleed 3-7 cm (53)': [['53','Hakzoolverhoging bekleed 3 t/m 7 cm']],
+      'Hakzoolverhoging bekleed 7+ cm (54)': [['54','Hakzoolverhoging bekleed 7 cm of meer']],
+      'Aangepaste hakken (56)': [['56','Aangepaste hakken (sleehak, bufferhak, afrolhak e.d.)']],
+      'Zoolverstijving module (57)': [['57','Zoolverstijving excl. afwikkeling en hakaanpassing']],
+      'Drukvrij maken schacht (58)': [['58','Drukvrij maken via uitzetten van de schacht']],
+      'Drukvrij maken exostose (59)': [['59','Drukvrij maken van exostose in schacht']],
+      'Nieuwe wreefsluiting (60)': [['60','Nieuwe wreefsluiting aan bestaande schoen']],
+      'Beugelbevestiging (61)': [['61','Beugelbevestiging inclusief cambreur en hak']],
+      'Correctie B-schoen per uur (62)': [['62','Correctie orthopedische B-schoenen per uur']],
+      'Werkzaamheden op opgave B-schoen (63)': [['63','Werkzaamheden / voorzieningen niet op lijst']],
+      'OVAC consult / maatnemen / nazorg (70)': [['70','OVAC consult, maatnemen, afleveren en nazorg']],
+      'OVAC supplement individueel (71)': [['71','OVAC supplement individueel']],
+      'OVAC supplement met enkelkap (72)': [['72','OVAC supplement met mediale/laterale enkelkap versteviging']],
+      'OVAC pro-supinatiewig (73)': [['73','OVAC pro-supinatiewig (zool + hak)']],
+      'OVAC afwikkelrol + hakaanpassing (74)': [['74','OVAC gecompliceerde afwikkelrol + hakaanpassing t/m 2 cm']],
+      'OVAC hakzoolverhoging 1-4 cm (77)': [['77','OVAC hakzoolverhoging niet bekleed 1 t/m 4 cm']],
+      'OVAC hakzoolverhoging 5-6 cm (78)': [['78','OVAC hakzoolverhoging niet bekleed 5 t/m 6 cm']],
+      'OVAC hakzoolverhoging bekleed 6+ cm (81)': [['81','OVAC hakzoolverhoging bekleed vanaf 6 cm']],
+      'OVAC aangepaste hakken (84)': [['84','OVAC aangepaste hakken']],
+      'OVAC zoolverstijving (85)': [['85','OVAC zoolverstijving']],
+      'OVAC wreefsluiting (88)': [['88','OVAC nieuwe wreefsluiting']],
+      'OVAC wreefsluiting prefab (88a)': [['88a','OVAC nieuwe wreefsluiting prefab']],
+      'OVAC beugelbevestiging (89)': [['89','OVAC beugelbevestiging']],
+      'OVAC correctie per uur (90)': [['90','OVAC correctie orthopedische voorziening per uur']],
+      'OVAC werkzaamheden op opgave (91)': [['91','OVAC werkzaamheden / voorzieningen niet op lijst']],
+    };
+    return m[v] || [];
+  },
+  'Eucare/Aevitae/Caresq'(v){
+    const m = {
+      'Verbandschoenen': [['41.0','Verbandschoenen (21% BTW)']],
+      'OSB laag / hoog / extra hoog': [['42','OSB laag / hoog / extra hoog']],
+      'VLOS per stuk': [['01','VLOS per stuk']],
+      'VLOS per paar': [['02','VLOS per paar']],
+      'OSA laag eerste': [['03','OSA laag — eerste voorziening']],
+      'OSA laag vervolg': [['04','OSA laag — vervolglevering']],
+      'OSA hoog eerste': [['05','OSA hoog — eerste voorziening']],
+      'OSA hoog vervolg': [['06','OSA hoog — vervolglevering']],
+      'OSA extra hoog eerste 1 laars': [['07+17','OSA extra hoog eerste voorziening — 1 laars']],
+      'OSA extra hoog vervolg 1 laars': [['08+17','OSA extra hoog vervolglevering — 1 laars']],
+      'OSA extra hoog eerste 2 laarzen': [['07+17+17','OSA extra hoog eerste voorziening — 2 laarzen']],
+      'OSA extra hoog vervolg 2 laarzen': [['08+17+17','OSA extra hoog vervolglevering — 2 laarzen']],
+      'Orthopedische binnenschoen (30)': [['30','Orthopedische binnenschoen eerste voorziening']],
+      'OVAC maatnemen / afleveren / nazorg (70)': [['70','OVAC maatnemen, afleveren en nazorg']],
+      'OVAC supplement individueel (71)': [['71','OVAC supplement individueel']],
+      'OVAC supplement met enkelkap (72)': [['72','OVAC supplement met mediale/laterale enkelkap versteviging']],
+      'OVAC gecompliceerde afwikkelrol (75)': [['75','OVAC gecompliceerde afwikkelrol met slijtlaag']],
+      'OVAC hakaanpassing bestaande hak (76)': [['76','OVAC hakaanpassing bestaande hak t/m 2 cm']],
+      'OVAC onderwerk verhogen 2+ cm (50)': [['50','OVAC onderwerk verhogen 2 cm of meer']],
+      'OVAC aangepaste hakken (84)': [['84','OVAC aangepaste hakken']],
+      'OVAC zoolverstijving (85)': [['85','OVAC zoolverstijving']],
+      'OVAC wreefsluiting (88)': [['88','OVAC nieuwe wreefsluiting']],
+    };
+    return m[v] || [];
+  },
+  Menzis(v){
+    const m = {
+      'OVAC per stuk (70)': [['70','Cluster OVAC per stuk (min. 2 aanpassingen excl. steunzool)']],
+      'OSB per paar (42)': [['42','Cluster OSB per paar']],
+      'OSA laag eerste (03)': [['03','Cluster OSA laag — eerste voorziening']],
+      'OSA laag vervolg (04)': [['04','Cluster OSA laag — vervolglevering']],
+      'OSA hoog eerste (05)': [['05','Cluster OSA hoog — eerste voorziening']],
+      'OSA hoog vervolg (06)': [['06','Cluster OSA hoog — vervolglevering']],
+      'Toeslag enkelkoker OSA hoog (16a)': [['16a','Toeslag enkelkoker per stuk bij OSA hoog']],
+      'OSA extra hoog eerste (07)': [['07','Cluster OSA extra hoog — eerste voorziening']],
+      'OSA extra hoog vervolg (08)': [['08','Cluster OSA extra hoog — vervolglevering']],
+      'Toeslag enkelkoker OSA extra hoog (17)': [['17','Toeslag enkelkoker per stuk bij OSA extra hoog']],
+      'EVO per stuk (binnenschoen / orthese)': [['n.v.t.','Cluster EVO per stuk']],
+      'VLOS per stuk (01)': [['01','Cluster VLOS per stuk']],
+      'VLOS per paar (02, Zorgkantoor)': [['02','Cluster VLOS per paar (Menzis Zorgkantoor)']],
+      'Verbandschoenen per stuk (41)': [['41','Cluster verbandschoenen per stuk (21% BTW)']],
+    };
+    return m[v] || [];
+  },
+  NTAC(v){
+    const m = {
+      'OSA laag eerste (1.0)': [['1.0','OSA laag — eerste paar']],
+      'OSA laag herhaling (1.0H)': [['1.0H','OSA laag — herhalingspaar']],
+      'OSA hoog eerste excl. enkelversteviging (2.0)': [['2.0','OSA hoog eerste paar excl. enkelversteviging']],
+      'OSA hoog eerste + enkelversteviging 1 zijde (2.1)': [['2.1','OSA hoog eerste paar incl. enkelversteviging enkelzijdig']],
+      'OSA hoog eerste + enkelversteviging 2 zijdes (2.2)': [['2.2','OSA hoog eerste paar incl. enkelversteviging beiderzijds']],
+      'OSA hoog eerste + enkelkoker 1 zijde (2.3)': [['2.3','OSA hoog eerste paar incl. enkelkoker enkelzijdig']],
+      'OSA hoog eerste + enkelkoker 2 zijdes (2.4)': [['2.4','OSA hoog eerste paar incl. enkelkoker beiderzijds']],
+      'OSA hoog herhaling excl. enkelversteviging (2.0H)': [['2.0H','OSA hoog herhalingspaar excl. enkelversteviging']],
+      'OSA hoog herhaling + enkelversteviging 1 zijde (2.1H)': [['2.1H','OSA hoog herhalingspaar incl. enkelversteviging enkelzijdig']],
+      'OSA hoog herhaling + enkelversteviging 2 zijdes (2.2H)': [['2.2H','OSA hoog herhalingspaar incl. enkelversteviging beiderzijds']],
+      'OSA hoog herhaling + enkelkoker 1 zijde (2.3H)': [['2.3H','OSA hoog herhalingspaar incl. enkelkoker enkelzijdig']],
+      'OSA hoog herhaling + enkelkoker 2 zijdes (2.4H)': [['2.4H','OSA hoog herhalingspaar incl. enkelkoker beiderzijds']],
+      'OSA extra hoog eerste + enkelkoker 1 zijde (3.0)': [['3.0','OSA extra hoog eerste paar incl. enkelkoker enkelzijdig']],
+      'OSA extra hoog eerste + enkelkoker 2 zijdes (3.1)': [['3.1','OSA extra hoog eerste paar incl. enkelkoker beiderzijds']],
+      'OSA extra hoog herhaling + enkelkoker 1 zijde (3.0H)': [['3.0H','OSA extra hoog herhalingspaar incl. enkelkoker enkelzijdig']],
+      'OSA extra hoog herhaling + enkelkoker 2 zijdes (3.1H)': [['3.1H','OSA extra hoog herhalingspaar incl. enkelkoker beiderzijds']],
+      'OSB per paar (4.0)': [['4.0','OSB per paar incl. alle benodigde voorzieningen']],
+      'MCO per paar (9.0)': [['9.0','MCO per paar incl. alle benodigde voorzieningen']],
+      'OVAC eenvoudig (5.0)': [['5.0','OVAC eenvoudig excl. aanschaf schoenen']],
+      'OVAC uitgebreid (5.1)': [['5.1','OVAC uitgebreid excl. aanschaf schoenen']],
+      'VLOS per stuk (6.0)': [['6.0','VLOS per stuk']],
+      'VLOS per paar (6.1)': [['6.1','VLOS per paar']],
+      'Verbandschoenen per stuk (7.0)': [['7.0','Verbandschoenen per stuk']],
+      'Verbandschoenen per paar (7.1)': [['7.1','Verbandschoenen per paar']],
+      'Diversen uurloon (8.0)': [['8.0','Diversen — uurloon aanpassingen niet in tariefbijlage (€ 89,38)']],
+    };
+    return m[v] || [];
+  },
+  ONVZ(v){
+    const m = {
+      'OSB per paar (42)': [['42','OSB per paar']],
+      'OSA laag eerste (03)': [['03','OSA laag — eerste voorziening']],
+      'OSA laag vervolg (04)': [['04','OSA laag — vervolglevering']],
+      'OSA hoog eerste (05)': [['05','OSA hoog — eerste voorziening']],
+      'OSA hoog vervolg (06)': [['06','OSA hoog — vervolglevering']],
+      'OSA extra hoog eerste (07)': [['07','OSA extra hoog — eerste voorziening (vanaf 20 cm boven mediale enkel)']],
+      'OSA extra hoog vervolg (08)': [['08','OSA extra hoog — vervolglevering']],
+      'Enkelomsluiting per stuk OSA hoog / extra hoog (16a)': [['16a','Enkelomsluiting per stuk bij OSA hoog en extra hoog']],
+      'Enkelkoker per stuk OSA hoog / extra hoog (17)': [['17','Enkelkoker per stuk bij OSA hoog en extra hoog']],
+      'OVAC per schoen / stuk (70)': [['70','OVAC per schoen/stuk (steunzolen niet inbegrepen)']],
+      'Orthopedische binnenschoen (30)': [['30','Orthopedische binnenschoen']],
+      'Verbandschoenen per paar (41.0)': [['41.0','Verbandschoenen per paar (21% BTW)']],
+      'VLOS per stuk (01)': [['01','VLOS per stuk']],
+      'VLOS per paar (02)': [['02','VLOS per paar']],
+    };
+    return m[v] || [];
+  },
+  Salland(v){
+    const m = {
+      'OSB eerste / vervolg / wisselpaar (42)': [['42','OSB eerste / vervolg / wisselpaar']],
+      'MCO eerste / vervolg / wisselpaar (25)': [['25','MCO eerste / vervolg / wisselpaar']],
+      'OSA laag eerste (03)': [['03','OSA laag — eerste paar']],
+      'OSA laag vervolg (04)': [['04','OSA laag — vervolgpaar']],
+      'OSA hoog eerste (05)': [['05','OSA hoog — eerste paar']],
+      'OSA hoog vervolg (06)': [['06','OSA hoog — vervolgpaar']],
+      'OSA hoog eerste + flexomsluiting 1 zijde (05+16)': [['05+16','OSA hoog eerste + flexomsluiting 1 zijde']],
+      'OSA hoog vervolg + flexomsluiting 1 zijde (06+16)': [['06+16','OSA hoog vervolg + flexomsluiting 1 zijde']],
+      'OSA hoog eerste + flexomsluiting 2 zijdes (05+16L+16R)': [['05+16L+16R','OSA hoog eerste + flexomsluiting 2 zijdes']],
+      'OSA hoog vervolg + flexomsluiting 2 zijdes (06+16L+16R)': [['06+16L+16R','OSA hoog vervolg + flexomsluiting 2 zijdes']],
+      'OSA hoog eerste + dynamische koker 1 zijde (05+16a)': [['05+16a','OSA hoog eerste + dynamische koker 1 zijde']],
+      'OSA hoog vervolg + dynamische koker 1 zijde (06+16a)': [['06+16a','OSA hoog vervolg + dynamische koker 1 zijde']],
+      'OSA hoog eerste + dynamische koker 2 zijdes (05+16aL+16aR)': [['05+16aL+16aR','OSA hoog eerste + dynamische koker 2 zijdes']],
+      'OSA hoog vervolg + dynamische koker 2 zijdes (06+16aL+16aR)': [['06+16aL+16aR','OSA hoog vervolg + dynamische koker 2 zijdes']],
+      'OSA extra hoog eerste (07)': [['07','OSA extra hoog — eerste paar']],
+      'OSA extra hoog vervolg (08)': [['08','OSA extra hoog — vervolgpaar']],
+      'OSA extra hoog eerste + statische koker 1 zijde (07+17)': [['07+17','OSA extra hoog eerste + statische koker 1 zijde']],
+      'OSA extra hoog vervolg + statische koker 1 zijde (08+17)': [['08+17','OSA extra hoog vervolg + statische koker 1 zijde']],
+      'OSA extra hoog eerste + statische koker 2 zijdes (07+17L+17R)': [['07+17L+17R','OSA extra hoog eerste + statische koker 2 zijdes']],
+      'OSA extra hoog vervolg + statische koker 2 zijdes (08+17L+17R)': [['08+17L+17R','OSA extra hoog vervolg + statische koker 2 zijdes']],
+      'OVAC per schoen (70)': [['70','OVAC per schoen (steunzolen niet inbegrepen)']],
+      'Orthopedische binnenschoen (30)': [['30','Orthopedische binnenschoen']],
+      'Verbandschoenen per paar (41)': [['41','Verbandschoenen per paar (21% BTW)']],
+      'Allergeenvrije schoen per paar': [['nvt','Allergeenvrije schoen per paar']],
+      'VLOS per stuk (01)': [['01','VLOS per stuk']],
+      'VLOS per paar (02)': [['02','VLOS per paar']],
+    };
+    return m[v] || [];
+  },
+  VGZ(v){
+    const m = {
+      'Verbandschoenen (41)': [['41','Verbandschoenen']],
+      'Allergeenvrije schoenen': [['nvt','Allergeenvrije schoenen (niet zijnde orthopedische schoenen)']],
+      'OVAC incl. steunzool (70)': [['70','OVAC incl. steunzool — min. 3 aanpassingen per schoen']],
+      'OSB semi-orthopedisch (42)': [['42','OSB semi-orthopedische schoenen']],
+      'MCO modulair concept (25)': [['25','MCO orthopedische schoenen conform modulair concept']],
+      'Aanvullingsprothese amputatie middenvoet (30)': [['30','Aanvullingsprothese bij amputatie middenvoet / verlies tenen']],
+      'Aanvullingsprothese amputatie voetwortel / Chopart (31)': [['31','Aanvullingsprothese bij amputatie voetwortel']],
+      'Aanvullingsprothese totale voetamputatie / Syme (32)': [['32','Aanvullingsprothese bij amputatie totale voet']],
+      'Orthese als arthrodese koker / binnenschoen (33)': [['33','Orthese als arthrodese koker (binnenschoen)']],
+      'Dynamische enkel-voet orthese maatwerk (34)': [['34','Maatwerk dynamische enkel-voet orthese']],
+      'Verkortingsbinnenschoen 2-5 cm (35)': [['35','Verkortingsbinnenschoen 2 t/m 5 cm']],
+      'Verkortingsbinnenschoen 6-10 cm (36)': [['36','Verkortingsbinnenschoen 6 t/m 10 cm']],
+      'Verkortingsbinnenschoen 11-15 cm (37)': [['37','Verkortingsbinnenschoen 11 t/m 15 cm']],
+      'OSA laag eerste (03)': [['03','OSA laag — eerste levering']],
+      'OSA laag vervolg (04)': [['04','OSA laag — vervolglevering']],
+      'OSA hoog eerste (05)': [['05','OSA hoog — eerste levering (16a zit in clusterprijs)']],
+      'OSA hoog vervolg (06)': [['06','OSA hoog — vervolglevering (16a zit in clusterprijs)']],
+      'OSA extra hoog eerste 1 laars (07+17)': [['07+17','OSA extra hoog eerste levering — 1 laars']],
+      'OSA extra hoog eerste 2 laarzen (07+17L+17R)': [['07+17L+17R','OSA extra hoog eerste levering — 2 laarzen']],
+      'OSA extra hoog vervolg 1 laars (08+17)': [['08+17','OSA extra hoog vervolglevering — 1 laars']],
+      'OSA extra hoog vervolg 2 laarzen (08+17L+17R)': [['08+17L+17R','OSA extra hoog vervolglevering — 2 laarzen']],
+      'VLOS 1 zijde — gehele periode (01)': [['01','VLOS met uitgebreide voorzieningen aan 1 zijde']],
+      'VLOS 2 zijden — gehele periode (02)': [['02','VLOS met uitgebreide voorzieningen aan beide zijden']],
+    };
+    return m[v] || [];
+  },
+  'Zorg en Zekerheid'(v){
+    const m = {
+      'OVAC per stuk incl. steunzool (70)': [['70','OVAC per stuk inclusief steunzool']],
+      'OSB per paar (42)': [['42','OSB per paar']],
+      'OSA laag eerste (03)': [['03','OSA laag — eerste paar']],
+      'OSA laag herhaling (04)': [['04','OSA laag — herhaling']],
+      'OSA hoog eerste (05)': [['05','OSA hoog — eerste paar']],
+      'OSA hoog herhaling (06)': [['06','OSA hoog — herhaling']],
+      'OSA extra hoog eerste (07)': [['07','OSA extra hoog — eerste paar']],
+      'OSA extra hoog herhaling (08)': [['08','OSA extra hoog — herhaling']],
+      'Enkelomsluiting OSA hoog / extra hoog per stuk (16a)': [['16a','Enkelomsluiting per stuk (max. 2 per paar)']],
+      'Enkelkoker OSA hoog / extra hoog per stuk (17)': [['17','Enkelkoker per stuk (max. 2 per paar)']],
+      'Orthopedische binnenschoen (30)': [['30','Orthopedische binnenschoen']],
+      'Verbandschoenen per paar (41.0)': [['41.0','Verbandschoenen per paar (21% BTW)']],
+      'Allergeenvrije schoen per paar': [['nvt','Allergeenvrije schoen per paar']],
+      'VLOS per stuk (01)': [['01','VLOS per stuk']],
+      'VLOS per paar (02)': [['02','VLOS per paar']],
+    };
+    return m[v] || [];
+  },
+};
+
+// Categorieën per verzekeraar: welke codes horen bij OSA / OSB / OVAC / VLOS / overig
+const categorieen = {
+  Achmea: {
+    'OSA': c => ['03','04','05','06','07','08','09','16a','17'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => ['70','71','72','73','74','75','76','77','78','79','81','82','84','85','86','87','88','88a','89','90'].includes(c),
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41.0',
+  },
+  ASR: {
+    'OSA': c => ['03','04','05','05+16A','05+16aL+16aR','06','06+16A','06+16aL+16aR','07','07+17','07+17L+17R','08','08+17','08+17L+17R','09'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41-0',
+    'Binnenschoenen': c => c === '31',
+    'Overig': c => ['21','22'].includes(c),
+  },
+  CZ: {
+    'OSA': c => ['03','04','05','06','05+16A','06+16A','07','08'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['03','04'].includes(c),
+    'Verbandschoenen': c => c === '41',
+    'Binnenschoenen': c => ['30','31','32','33','34','35','36','37','38'].includes(c),
+    'Overig': c => ['39','21A'].includes(c),
+  },
+  DSW: {
+    'OSA': c => ['03','04','05','06','07','08','09','10','11','14','15','16','16a','17','18','19','20','21','22'].includes(c),
+    'OSB': c => ['40','42','43','44','45','46','47','48','49','50','51','53','54','56','57','58','59','60','61','62','63'].includes(c),
+    'OVAC': c => ['70','71','72','73','74','77','78','81','84','85','88','88a','89','90','91'].includes(c),
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41',
+    'Binnenschoenen': c => ['30','31','32','33','34','35','36','37','38','39'].includes(c),
+  },
+  'Eucare/Aevitae/Caresq': {
+    'OSA': c => ['03','04','05','06','07+17','08+17','07+17+17','08+17+17'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => ['70','71','72','75','76','50','84','85','88'].includes(c),
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41.0',
+    'Binnenschoenen': c => c === '30',
+  },
+  Menzis: {
+    'OSA': c => ['03','04','05','06','07','08','16a','17'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41',
+    'Binnenschoenen': c => c === 'n.v.t.',
+  },
+  NTAC: {
+    'OSA': c => ['1.0','1.0H','2.0','2.1','2.2','2.3','2.4','2.0H','2.1H','2.2H','2.3H','2.4H','3.0','3.1','3.0H','3.1H'].includes(c),
+    'OSB': c => c === '4.0',
+    'OVAC': c => ['5.0','5.1'].includes(c),
+    'VLOS': c => ['6.0','6.1'].includes(c),
+    'Verbandschoenen': c => ['7.0','7.1'].includes(c),
+    'MCO': c => c === '9.0',
+    'Overig': c => c === '8.0',
+  },
+  ONVZ: {
+    'OSA': c => ['03','04','05','06','07','08','16a','17'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41.0',
+    'Binnenschoenen': c => c === '30',
+  },
+  Salland: {
+    'OSA': c => ['03','04','05','06','05+16','06+16','05+16L+16R','06+16L+16R','05+16a','06+16a','05+16aL+16aR','06+16aL+16aR','07','08','07+17','08+17','07+17L+17R','08+17L+17R'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41',
+    'MCO': c => c === '25',
+    'Binnenschoenen': c => c === '30',
+    'Overig': c => c === 'nvt',
+  },
+  VGZ: {
+    'OSA': c => ['03','04','05','06','07+17','07+17L+17R','08+17','08+17L+17R'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41',
+    'MCO': c => c === '25',
+    'Binnenschoenen': c => ['30','31','32','33','34','35','36','37'].includes(c),
+    'Overig': c => c === 'nvt',
+  },
+  'Zorg en Zekerheid': {
+    'OSA': c => ['03','04','05','06','07','08','16a','17'].includes(c),
+    'OSB': c => c === '42',
+    'OVAC': c => c === '70',
+    'VLOS': c => ['01','02'].includes(c),
+    'Verbandschoenen': c => c === '41.0',
+    'Binnenschoenen': c => c === '30',
+    'Overig': c => c === 'nvt',
+  },
+};
+
+let activeCat = null; // bijhouden welke categorie actief is
+
+const verzekering = document.getElementById('verzekering');
+const tbody = document.getElementById('tbody');
+const regels = document.getElementById('regels');
+const merken = document.getElementById('merken');
+const chips = document.getElementById('chips');
+const names = Object.keys(data);
+const content = document.querySelector('.content');
+const smartBox = document.createElement('div');
+smartBox.className = 'card panel';
+smartBox.innerHTML = `
+  <h2 style="margin-top:0">Slimme keuzehulp</h2>
+  <p class="muted">Kies een categorie en gebruik eventueel de zoekbalk om verder te filteren.</p>
+  <div id="catBtns" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px"></div>
+  <div id="smartResult" class="list"></div>
+`;
+content.prepend(smartBox);
+const catBtns = document.getElementById('catBtns');
+const smartResult = document.getElementById('smartResult');
+
+function buildCatButtons(){
+  catBtns.innerHTML = '';
+  activeCat = null;
+  const cats = categorieen[verzekering.value];
+  if(!cats){ smartResult.innerHTML = ''; return; }
+  // Altijd toon "Alles" knop
+  const allBtn = document.createElement('button');
+  allBtn.textContent = 'Alles';
+  allBtn.style.cssText = 'padding:10px 18px;border-radius:999px;border:1px solid var(--border);background:var(--primary);color:white;cursor:pointer;font:inherit;transition:transform .2s,box-shadow .2s';allBtn.addEventListener('mouseenter',()=>{allBtn.style.transform='translateY(-2px)';allBtn.style.boxShadow='0 4px 12px rgba(201,162,39,0.30)'});allBtn.addEventListener('mouseleave',()=>{allBtn.style.transform='';allBtn.style.boxShadow=''});
+  allBtn.onclick = (e) => { addRipple(e,allBtn); activeCat = null; highlightBtn(allBtn); renderTable(); smartResult.innerHTML = ''; };
+  catBtns.appendChild(allBtn);
+  // Standaard Alles rood bij opbouwen
+  setTimeout(() => highlightBtn(allBtn), 0);
+
+  Object.keys(cats).forEach(cat => {
+    const btn = document.createElement('button');
+    btn.textContent = cat;
+    btn.dataset.cat = cat;
+    btn.style.cssText = 'padding:10px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;font:inherit;transition:transform .2s,box-shadow .2s';btn.addEventListener('mouseenter',()=>{if(btn.style.background!=='rgb(192, 57, 43)'){btn.style.transform='translateY(-2px)';btn.style.boxShadow='0 4px 12px rgba(201,162,39,0.20)'}});btn.addEventListener('mouseleave',()=>{if(btn.style.background!=='rgb(192, 57, 43)'){btn.style.transform='';btn.style.boxShadow=''}});
+    btn.onclick = (e) => { addRipple(e,btn); activeCat = cat; highlightBtn(btn); renderSmart(cat); renderTable(); };
+    catBtns.appendChild(btn);
+  });
+}
+
+function highlightBtn(active){
+  catBtns.querySelectorAll('button').forEach(b => {
+    b.style.background = 'var(--surface2)';
+    b.style.color = 'var(--text)';
+    b.style.borderColor = 'var(--border)';
+  });
+  active.style.background = '#0d2240';
+  active.style.color = '#C9A227';
+  active.style.borderColor = '#C9A227';
+}
+
+function renderSmart(cat){
+  const engine = rulesEngine[verzekering.value];
+  if(!engine){ smartResult.innerHTML = ''; return; }
+  // Haal alle keys op uit de engine voor deze categorie via toString
+  const src = engine.toString();
+  const re = /'([^']+)':\s*\[\[/g;
+  let match;
+  const catFilter = categorieen[verzekering.value]?.[cat];
+  const allKeys = [];
+  while((match = re.exec(src)) !== null){ allKeys.push(match[1]); }
+
+  // Roep engine aan voor elke key en filter op categorie
+  const results = [];
+  allKeys.forEach(k => {
+    const res = engine(k);
+    if(res && res.length){
+      res.forEach(([c,o]) => {
+        if(!catFilter || catFilter(c)){
+          if(!results.find(r => r[0]===c)) results.push([c,o]);
+        }
+      });
+    }
+  });
+
+  if(!results.length){
+    smartResult.innerHTML = '<div class="rule">Geen codes gevonden voor deze categorie.</div>';
+    return;
+  }
+  fadeEl(smartResult, ()=>{ smartResult.innerHTML = results.map(([c,o]) => `<div class="rule"><strong>${c}</strong> — ${o}</div>`).join(''); });
+}
+
+function renderTable(){
+  const item = data[verzekering.value];
+  const q = zoek.value.toLowerCase().trim();
+  const catFilter = activeCat ? categorieen[verzekering.value]?.[activeCat] : null;
+  const rows = item.codes.filter(([c,o]) => {
+    const zoekMatch = !q || (c + ' ' + o).toLowerCase().includes(q);
+    const catMatch = !catFilter || catFilter(c);
+    return zoekMatch && catMatch;
+  });
+  tbody.innerHTML = rows.map(([c,o]) => `<tr><td><strong>${c}</strong></td><td>${o}</td></tr>`).join('');
+}
+
+names.forEach(n => {
+  const o = document.createElement('option'); o.value=n; o.textContent=n; verzekering.appendChild(o);
+  const c = document.createElement('span'); c.className='chip'; c.dataset.naam=n; c.textContent=n; c.onclick=(e)=>{kiesVerzekeraar(n,e);}; chips.appendChild(c);
+  // Custom select optie
+  const li = document.createElement('div'); li.className='custom-select-option'; li.textContent=n;
+  li.onclick=()=>{ kiesVerzekeraar(n); document.getElementById('selectBtn').classList.remove('open'); document.getElementById('selectDropdown').classList.remove('open'); };
+  document.getElementById('selectList').appendChild(li);
+});
+function addRipple(e, el){
+  const r = document.createElement('span');
+  r.className = 'ripple-cirkel';
+  const rect = el.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+  el.classList.add('ripple-wrap');
+  el.appendChild(r);
+  setTimeout(()=>r.remove(), 600);
+}
+function kiesVerzekeraar(n, e){
+  if(e) addRipple(e, e.currentTarget||e.target);
+  verzekering.value=n;
+  document.getElementById('selectLabel').textContent=n;
+  document.querySelectorAll('.custom-select-option').forEach(el=>el.classList.toggle('actief', el.textContent===n));
+  render();
+}
+
+function fadeEl(el, fn){
+  el.style.transition = 'opacity .2s ease, transform .2s ease';
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(8px)';
+  setTimeout(() => {
+    fn();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    });
+  }, 210);
+}
+function render(){
+  const actief = document.getElementById('actieveVerzekering');
+  if(actief) actief.textContent = '— ' + verzekering.value;
+  // Highlight actieve chip
+  document.querySelectorAll('.chip').forEach(c => {
+    c.classList.toggle('actief', c.dataset.naam === verzekering.value);
+  });
+  const item = data[verzekering.value];
+  merken.textContent = 'Labels / gekoppelde verzekeringen: ' + item.verzekeraars.join(', ');
+  fadeEl(regels, ()=>{ regels.innerHTML = item.regels.map(r => `<div class="rule">${r}</div>`).join(''); });
+  activeCat = null;
+  buildCatButtons();
+  renderTable();
+}
+kiesVerzekeraar('DSW');
+verzekering.addEventListener('change', render);
+render();
+// Custom select
+function toggleSelect(){
+  const btn = document.getElementById('selectBtn');
+  const dd = document.getElementById('selectDropdown');
+  btn.classList.toggle('open');
+  dd.classList.toggle('open');
+}
+// Sluit dropdown bij klik buiten
+document.addEventListener('click', e => {
+  const wrap = document.querySelector('.custom-select-wrap');
+  if(wrap && !wrap.contains(e.target)){
+    document.getElementById('selectBtn').classList.remove('open');
+    document.getElementById('selectDropdown').classList.remove('open');
+  }
+});
+function toggleMenu(){
+  document.getElementById('sideMenu').classList.toggle('open');
+  document.getElementById('menuOverlay').classList.toggle('open');
+}
+function wisselTab(id, knop){
+  document.querySelectorAll('.tab-inhoud').forEach(t => t.classList.remove('actief'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('actief'));
+  document.getElementById('tab-' + id).classList.add('actief');
+  if(knop) knop.classList.add('actief');
+}
+// Scroll-in observer
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('zichtbaar'); scrollObserver.unobserve(e.target); }});
+}, {threshold:0.12});
+document.querySelectorAll('.card').forEach(el=>{ el.classList.add('scroll-in'); scrollObserver.observe(el); });
+
+const mq = window.matchMedia('(prefers-color-scheme: dark)');
+document.documentElement.setAttribute('data-theme', mq.matches ? 'dark' : 'light');
+mq.addEventListener('change', e => document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light'));
+</script>
+
+<!-- GEBRUIKSTERMIJNEN -->
+<div id="tab-termijnen" class="tab-inhoud">
+<div class="card panel" style="margin-top:20px">
+  <h2 style="margin-top:0">Gebruikstermijnen 2026</h2>
+  <p class="muted">RES = reservepaar &nbsp;|&nbsp; HER = herhalingspaar</p>
+  <table class="info-tabel">
+    <thead><tr><th>Verzekeraar</th><th>1e RES na</th><th>HER</th><th>RES</th><th>Opmerking</th></tr></thead>
+    <tbody>
+      <tr><td>Achmea</td><td>3 mnd</td><td>18 mnd</td><td>18 mnd</td><td></td></tr>
+      <tr><td>Achmea Zorgkantoor</td><td>3 mnd</td><td>18 mnd</td><td>Geen RES</td><td>Alleen HER na 1e RES</td></tr>
+      <tr><td>ASR</td><td>3 mnd</td><td>18 mnd</td><td>18 mnd</td><td></td></tr>
+      <tr><td>Caresq / Eucare / Aevitae</td><td>3 mnd</td><td>15 mnd</td><td>36 mnd</td><td></td></tr>
+      <tr><td>CZ</td><td>3 mnd</td><td>15 mnd</td><td>Geen RES</td><td>Alleen HER na 1e RES</td></tr>
+      <tr><td>DSW / Stad Holland</td><td>3 mnd</td><td>15 mnd</td><td>36 mnd</td><td></td></tr>
+      <tr><td>Menzis</td><td>3 mnd</td><td>18 mnd</td><td>24 mnd</td><td></td></tr>
+      <tr><td>Menzis Zorgkantoor</td><td>3 mnd</td><td>18 mnd</td><td>Geen RES</td><td>Alleen HER na 1e RES</td></tr>
+      <tr><td>ONVZ</td><td>3 mnd</td><td>18 mnd</td><td>18 mnd</td><td></td></tr>
+      <tr><td>Salland</td><td>3 mnd</td><td>18 mnd</td><td>36 mnd</td><td></td></tr>
+      <tr><td>Salland Zorgkantoor (NTAC)</td><td>3 mnd</td><td>18 mnd</td><td>18 mnd</td><td></td></tr>
+      <tr><td>VGZ</td><td>3 mnd</td><td>18 mnd</td><td>36 mnd</td><td></td></tr>
+      <tr><td>Zorg en Zekerheid</td><td>3 mnd</td><td>18 mnd</td><td>18 mnd</td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- STAFFELING NIET AFLEVEREN -->
+<div id="tab-staffeling" class="tab-inhoud">
+<div class="card panel" style="margin-top:20px">
+  <h2 style="margin-top:0">Staffeling bij niet afleveren 2026</h2>
+  <p class="muted">Percentage van de totale vergoeding dat je mag declareren per productiefase.</p>
+  <h3>Achmea / Zilveren Kruis</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>OSA</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OSA</td><td>T/m passen</td><td>45%</td></tr>
+      <tr><td>OSA</td><td>T/m schachten maken</td><td>63%</td></tr>
+      <tr><td>OSA</td><td>T/m onderwerken (schoenen klaar)</td><td>97%</td></tr>
+      <tr><td>OSB</td><td>T/m aanmeten</td><td>65%</td></tr>
+      <tr><td>OSB</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>OVAC</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>Enkelkoker 16A/17</td><td>T/m aanmeten</td><td>0%</td></tr>
+      <tr><td>Enkelkoker 16A/17</td><td>T/m afleverklaar</td><td>65%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">ASR</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>T/m passen</td><td>35%</td></tr>
+      <tr><td>Enkelomsluiting(en) en/of proefschoenen</td><td>100% voor zover gerealiseerd</td></tr>
+      <tr><td>T/m schachten maken</td><td>63%</td></tr>
+      <tr><td>T/m onderwerken maken</td><td>97%</td></tr>
+      <tr><td>T/m afleverklaar</td><td>100%</td></tr>
+    </tbody>
+  </table>
+  <div class="rule" style="margin-top:8px">&#9888; ASR: staffels declareren onder kostengroep 11.</div>
+  <h3 style="margin-top:20px">Caresq / Eucare / Aevitae</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>Maatnemen voltooid</td><td>17%</td></tr>
+      <tr><td>Leest gemoduleerd, passchoenen gereed</td><td>35%</td></tr>
+      <tr><td>Schacht gereed, onderwerk nog niet gestart</td><td>63%</td></tr>
+      <tr><td>Schoen klaar, geen fysieke overdracht</td><td>97%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">CZ</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>OSA</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OSA</td><td>T/m passen</td><td>35%</td></tr>
+      <tr><td>OSA</td><td>T/m schachten maken</td><td>63%</td></tr>
+      <tr><td>OSA</td><td>T/m onderwerk maken</td><td>97%</td></tr>
+      <tr><td>OSB</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OSB</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>OVAC</td><td>T/m aanmeten (post 70)</td><td>&#8364;117,-</td></tr>
+      <tr><td>OVAC</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>Prothesen/orthesen</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>Prothesen/orthesen</td><td>T/m passen</td><td>63%</td></tr>
+      <tr><td>Prothesen/orthesen</td><td>T/m afleverklaar</td><td>97%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">DSW</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>OSA</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OSA</td><td>T/m passen + gebruikte modules</td><td>35%</td></tr>
+      <tr><td>OSA</td><td>T/m schachten + modules</td><td>63%</td></tr>
+      <tr><td>OSA</td><td>T/m onderwerken (klaar) + modules</td><td>97%</td></tr>
+      <tr><td>OSB</td><td>T/m aanmeten (post 40)</td><td>&#8364;101,52</td></tr>
+      <tr><td>OSB</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>OVAC</td><td>T/m aanmeten (post 70)</td><td>&#8364;60,91</td></tr>
+      <tr><td>OVAC</td><td>T/m afleverklaar</td><td>97%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">Menzis</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>OSA</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OSA</td><td>T/m passen</td><td>45%</td></tr>
+      <tr><td>OSA</td><td>T/m schachten maken</td><td>63%</td></tr>
+      <tr><td>OSA</td><td>T/m onderwerken (klaar)</td><td>97%</td></tr>
+      <tr><td>OSB</td><td>T/m aanmeten</td><td>65%</td></tr>
+      <tr><td>OSB</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>OVAC</td><td>T/m afleverklaar</td><td>97%</td></tr>
+      <tr><td>Koker</td><td>T/m aanmeten</td><td>0%</td></tr>
+      <tr><td>Koker</td><td>T/m afleverklaar</td><td>65%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">NTAC</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>OSA</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OSA</td><td>T/m passen</td><td>35%</td></tr>
+      <tr><td>OSA</td><td>T/m schachten</td><td>63%</td></tr>
+      <tr><td>OSA</td><td>Afleverklaar</td><td>97%</td></tr>
+      <tr><td>OSB</td><td>T/m aanmeten</td><td>45%</td></tr>
+      <tr><td>OSB</td><td>Afleverklaar</td><td>97%</td></tr>
+      <tr><td>OVAC</td><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>OVAC</td><td>Afleverklaar</td><td>97%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">ONVZ &amp; Salland</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Fase</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td>T/m aanmeten</td><td>17%</td></tr>
+      <tr><td>T/m passen</td><td>35%</td></tr>
+      <tr><td>T/m schachten maken</td><td>63%</td></tr>
+      <tr><td>T/m onderwerk maken</td><td>97%</td></tr>
+      <tr><td>Schoen staat klaar</td><td>100%</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">VGZ — vaste bedragen bij afleverklaar</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Bedrag 2026</th></tr></thead>
+    <tbody>
+      <tr><td>OSB semi-orthopedisch</td><td>&#8364; 533,03</td></tr>
+      <tr><td>MCO</td><td>&#8364; 602,55</td></tr>
+      <tr><td>OSA laag</td><td>&#8364; 820,40</td></tr>
+      <tr><td>OSA hoog</td><td>&#8364; 1.066,05</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- GARANTIE EN NAZORG -->
+<div id="tab-garantie" class="tab-inhoud">
+<div class="card panel" style="margin-top:20px">
+  <h2 style="margin-top:0">Garantie &amp; nazorg 2026</h2>
+  <h3>Achmea / DSW</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Onderdeel</th><th>Termijn</th></tr></thead>
+    <tbody>
+      <tr><td>Pasvorm</td><td>3 maanden na aflevering (gelijkblijvende situatie)</td></tr>
+      <tr><td>Materiaal &amp; technische kwaliteit</td><td>6 maanden na aflevering</td></tr>
+    </tbody>
+  </table>
+  <div class="rule" style="margin-top:8px">DSW: na vervallen garantie offerte aanvragen bij verzekeraar. Bij herhaling altijd toelichting geven.</div>
+  <h3 style="margin-top:20px">ASR / Eucare / Caresq / VGZ</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Binnen 6 mnd</th><th>Buiten 6 mnd</th></tr></thead>
+    <tbody>
+      <tr><td>Onderhoud</td><td>Verzekerde</td><td>Verzekerde</td></tr>
+      <tr><td>Verzolen</td><td>Zorgaanbieder</td><td>Verzekerde</td></tr>
+      <tr><td>Reparatie</td><td>Zorgaanbieder</td><td>Zorgverzekeraar</td></tr>
+      <tr><td>Correctie (ongewijzigde situatie)</td><td>Zorgaanbieder</td><td>Zorgaanbieder</td></tr>
+      <tr><td>Aanpassing (gewijzigde situatie)</td><td>Zorgverzekeraar</td><td>Zorgverzekeraar</td></tr>
+    </tbody>
+  </table>
+  <div class="rule" style="margin-top:8px">VGZ: reparaties buiten 6 maanden zitten per 2025 in de clustertarieven (1% verhoging). Niet van toepassing bij aanvullingsprothesen/orthesen en niet-aflevering.</div>
+  <h3 style="margin-top:20px">CZ</h3>
+  <div class="rule">Pasgarantie minimaal 3 maanden (excl. verbandschoenen). Kwaliteitsgarantie 6 maanden na afleverdatum. Geldt bij normaal gebruik volgens gebruiksvoorschriften.</div>
+  <h3 style="margin-top:20px">Menzis</h3>
+  <div class="rule">Nazorgperiode 18 maanden op materiaal en technische kwaliteit. Reparaties door onzorgvuldig gebruik voor rekening verzekerde. Onderhoud altijd voor rekening verzekerde.</div>
+  <h3 style="margin-top:20px">ONVZ</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Onderdeel</th><th>Termijn</th></tr></thead>
+    <tbody>
+      <tr><td>Pasvorm</td><td>Gehele gebruikstermijn (ongewijzigde situatie)</td></tr>
+      <tr><td>Materiaal &amp; kwaliteit (incl. zolen/hakken)</td><td>6 maanden na aflevering</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">Salland</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Onderdeel</th><th>Termijn</th></tr></thead>
+    <tbody>
+      <tr><td>Pasvorm</td><td>3 maanden na aflevering</td></tr>
+      <tr><td>Materiaal &amp; kwaliteit (incl. zolen/hakken)</td><td>18 maanden na aflevering</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">Zorg en Zekerheid</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Onderdeel</th><th>Termijn</th></tr></thead>
+    <tbody>
+      <tr><td>Pasvorm</td><td>3 maanden na aflevering</td></tr>
+      <tr><td>Materiaal &amp; herstel</td><td>18 maanden na aflevering</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:20px">VGZ — garantietermijnen per type</h3>
+  <table class="info-tabel">
+    <thead><tr><th>Type</th><th>Tot 16 jaar</th><th>Vanaf 16 jaar</th></tr></thead>
+    <tbody>
+      <tr><td>Verbandschoenen</td><td>6 mnd</td><td>6 mnd</td></tr>
+      <tr><td>OSA / OSB / OVAC (primair)</td><td>6 mnd</td><td>18 mnd</td></tr>
+      <tr><td>Reservepaar</td><td>6 mnd</td><td>18 mnd</td></tr>
+      <tr><td>Allergeenvrije schoenen</td><td>6 mnd</td><td>18 mnd</td></tr>
+      <tr><td>Aanverwante hulpmiddelen</td><td colspan="2">24 mnd</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+
+<!-- STAFFELING ZOZIJN / NTAC -->
+<div id="tab-zozijn" class="tab-inhoud">
+<div class="card panel" style="margin-top:20px">
+  <h2 style="margin-top:0">Prijslijst Zozijn / NTAC 2026</h2>
+  <div class="prijs-grid">
+    <div>
+      <h3>Reparaties (9% BTW)</h3>
+      <table class="info-tabel">
+        <thead><tr><th>Omschrijving</th><th>Incl.</th></tr></thead>
+        <tbody>
+          <tr><td>Hakken</td><td>&#8364; 20,50</td></tr>
+          <tr><td>Hakken (Vibram / complex)</td><td>&#8364; 26,25</td></tr>
+          <tr><td>Zolen</td><td>&#8364; 36,75</td></tr>
+          <tr><td>Zolen (Vibram / complex)</td><td>&#8364; 42,00</td></tr>
+          <tr><td>Zolen + hakken</td><td>&#8364; 55,00</td></tr>
+          <tr><td>Zolen + hakken + opbouwhak</td><td>&#8364; 73,00</td></tr>
+          <tr><td>Zolen + hakken (Vibram / complex)</td><td>&#8364; 68,25</td></tr>
+          <tr><td>Teenstukken</td><td>&#8364; 20,00</td></tr>
+          <tr><td>Hielvoering laag / halfhoog</td><td>&#8364; 21,00</td></tr>
+          <tr><td>Hielvoering hoog</td><td>&#8364; 27,25</td></tr>
+          <tr><td>Uitvlakken per schoen</td><td>&#8364; 6,25</td></tr>
+          <tr><td>Oprekken per schoen</td><td>&#8364; 9,00</td></tr>
+          <tr><td>Plak- en stikwerk</td><td>Overleg schoenmaker</td></tr>
+          <tr><td>Klittenbanden</td><td>&#8364; 8,50</td></tr>
+          <tr><td>Dekjes</td><td>&#8364; 21,00</td></tr>
+          <tr><td>Haken en ringen</td><td>&#8364; 1,00</td></tr>
+          <tr><td>Ritsen (tot 15 cm)</td><td>&#8364; 26,25</td></tr>
+          <tr><td>Zipper per stuk</td><td>&#8364; 5,75</td></tr>
+          <tr><td>Schoenen verven</td><td>&#8364; 94,00</td></tr>
+          <tr><td>Schoenen poetsen</td><td>&#8364; 42,00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Steunzolen (21% BTW)</h3>
+      <table class="info-tabel">
+        <thead><tr><th>Omschrijving</th><th>Incl.</th></tr></thead>
+        <tbody>
+          <tr><td>3/4 steunen</td><td>&#8364; 204,75</td></tr>
+          <tr><td>3/4 steunen herhaling binnen 3 mnd</td><td>&#8364; 152,25</td></tr>
+          <tr><td>4/4 steunen</td><td>&#8364; 241,50</td></tr>
+          <tr><td>4/4 steunen herhaling binnen 3 mnd</td><td>&#8364; 162,75</td></tr>
+          <tr><td>4/4 steunen &lt;16 jaar</td><td>&#8364; 210,00</td></tr>
+          <tr><td>4/4 steunen &lt;16 jaar herh. binnen 3 mnd</td><td>&#8364; 157,50</td></tr>
+          <tr><td>Werkschoensteunzolen</td><td>&#8364; 304,50</td></tr>
+          <tr><td>Verkortingszool 3/4</td><td>&#8364; 31,50</td></tr>
+          <tr><td>Verkortingszool 4/4</td><td>&#8364; 42,00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- NVOS -->
+<div id="tab-nvos" class="tab-inhoud">
+<div class="card panel" style="margin-top:20px">
+  <h2 style="margin-top:0">NVOS &#8212; Nuttige links &amp; info</h2>
+  <div class="rule">Overzicht van alle zorgverzekeraar-voorwaarden via NVOS Orthobanda:<br>
+    <a href="https://www.nvos-orthobanda.nl/zorgverzekeraars-algemeen" target="_blank" style="color:#C9A227;font-weight:600">nvos-orthobanda.nl/zorgverzekeraars-algemeen</a>
+  </div>
+  <h3 style="margin-top:20px">Aanvullende notities</h3>
+  <div class="rule" style="margin-bottom:8px"><strong>Achmea:</strong> let op de extra posten die je mag gebruiken, bijv. voorzieningen en proefschoenen.</div>
+  <div class="rule" style="margin-bottom:8px"><strong>CZ:</strong> let op of er voorzieningen in zitten (zie prijslijst). Dit jaar vermelden — worden vergoed.</div>
+  <div class="rule" style="margin-bottom:8px"><strong>VGZ:</strong> let op schachthoogte voor extra hoog. Heb je in het verleden OSB geleverd met leestaanpassingen? Dan nu als MCO aanvragen via formulier. Vermeld dat je altijd MCO hebt geleverd maar dit niet kon declareren.</div>
+  <div class="rule" style="margin-bottom:8px"><strong>ASR:</strong> proefschoenen worden vergoed.</div>
+  <div class="rule" style="margin-bottom:8px"><strong>Achmea / Salland / ONVZ:</strong> steunzolen zitten niet in de OVAC-vergoeding. Heeft de klant steunzolen nodig, dan apart aan de klant berekenen.</div>
+</div>
+</body>
+</html>
